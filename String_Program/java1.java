@@ -1,6 +1,5 @@
 /*
-Write a Java program to get the character at the given index within the string.
-*/
+Write a Java program to create a String object with a character array.*/
 
 package My_Work;
 
