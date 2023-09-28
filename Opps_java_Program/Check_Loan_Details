@@ -1,0 +1,136 @@
+/*
+Create a Loan class to calculate loan payments based on principal, interest rate, and duration.
+
+Class name Loan with the Instance variable
+
+ double principal ,private  
+
+ double interestRate ,private
+
+ int durationMonths ,private
+
+1.Create a public constructor with parameters are principal,interestRate and durationMonths. To initialise the instance variable.
+
+Access modifier:-
+
+public
+
+If any parameter value is 0 the print "Error".
+
+2.Create a method name as calculateMonthlyPayment().Public method to calculate the monthly loan payment
+
+Access modifier:-
+
+public
+
+return type:-
+
+double
+
+3.Create a method name as getPrincipal().To get the principal amount
+
+Access modifier:-
+
+public
+
+return type:-
+
+double
+
+4.Create a method name as getInterestRate().To get the interest rate
+
+Access modifier:-
+
+public
+
+return type:-
+
+double
+
+5.Create a method name as getDurationMonths().To get the loan duration in months
+
+Access modifier:-
+
+public
+
+return type:-
+
+int
+
+Create a Class CheckLoan to check your functionalities of the class.Like to intialise the instance variable which is present in Loan class.
+*/
+import java.util.*;
+ class Loan {
+    //Declare here your instance variable....
+    private double principal;  
+    private double interestRate;
+    private int durationMonths;
+    
+    
+    public void Loan(double principal, double interestRate, int durationMonths) {
+        //Initialise the instance variable
+        this.principal=principal;
+        this.interestRate=interestRate;
+        this.durationMonths=durationMonths;
+    }
+
+    public double calculateMonthlyPayment() {
+        //Write your logic here to calculate the monthly loan payment.
+        double annual=0.0;
+        if(principal==0 || interestRate==0 || durationMonths==0)
+        {
+            System.out.println("Error");
+        }
+        else
+        {
+            annual=(double)(principal+interestRate+durationMonths)/100;
+        }
+        // Convert annual rate to monthly
+        return annual;
+    }
+
+    public double getPrincipal() 
+    {
+        
+        return principal;
+    }
+
+    public double getInterestRate() 
+    {
+        
+        return interestRate;
+    }
+
+    public int getDurationMonths() 
+    {
+        return durationMonths;
+    }
+}
+public class CheckLoan {
+    public static void main(String[] args) {
+        //Create Object here to initailize the constructor...
+        Loan l=new Loan();
+        
+        //Use scanner class to take user input...
+        
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("Enter the Principal: ");
+        double principal=sc.nextDouble();
+        
+        System.out.println("Enter the Interest Rate: ");
+        double interestRate=sc.nextDouble();
+        
+        System.out.println("Enter the Duration of Months: ");
+        int durationMonths=sc.nextInt();
+        
+        //call the methods to get the values and print values...
+        l.Loan(principal, interestRate, durationMonths);
+        
+        System.out.println("The Loan is : "+l.calculateMonthlyPayment());
+        System.out.println("Interest Months : "+l.getPrincipal());
+        System.out.println("Inrerest : "+l.getInterestRate());
+        System.out.println("Duration of Months : "+l.getDurationMonths());
+        
+    }
+}
