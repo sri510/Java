@@ -1,0 +1,81 @@
+/*
+Create a class Order (Business Logic Class)
+
+Instance Variables: 
+
+  private int orderId;
+
+  private String itemName;
+
+  private double itemPrice;
+
+Create a parameterized constructor initialize the instance variable of the class.
+
+Override toString() from Object class to print Order class properties.
+
+Create a class Customer (Business Logic Class)
+
+Instance Variables: 
+
+  private int customerId;
+
+  private String customerName;
+
+  private String customerAddress;
+
+  private Order order; //HAS-A relation
+
+Create a parameterized constructor initialize the instance variable of the class.
+
+Override toString() from Object class to print Customer class properties.
+
+Create a class Zomato (Executable Logic Class) which contains main method to print Customer class properties using toString() method.
+*/
+class Order {
+   
+    private int orderId;
+    private String itemName;
+    private double itemPrice;
+   
+
+public Order(int orderId,String itemName, double itemPrice)
+{
+    this.orderId = orderId;
+    this.itemName = itemName;
+    this.itemPrice = itemPrice;
+    
+
+}
+public String toString() {
+        return "Order ID: " + orderId +"\nItem Name: " + itemName +"\nItem Price: " + itemPrice;
+    }
+}
+
+class Customer {
+   
+    private int customerId;
+    private String customerName;
+    private String customerAddress;
+    private Order order; 
+
+     
+    public Customer(int customerId, String customerName, String customerAddress, Order order) {
+        this.customerId = customerId;
+        this.customerName = customerName;
+        this.customerAddress = customerAddress;
+        this.order = order;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer ID: " + customerId +"\nCustomer Name: " + customerName +"\nCustomer Address: " + customerAddress +"\nOrder Details:\n" + order.toString();
+    }
+}
+
+public class Zomato {
+    public static void main(String[] args) {
+     Order order = new Order(121, "Momos", 80.00);
+        Customer customer = new Customer(1, "Sripriya", "Ranchi", order);
+        System.out.println(customer.toString());
+}
+}
