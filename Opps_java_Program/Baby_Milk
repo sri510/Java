@@ -1,0 +1,87 @@
+/*
+Copy Constructor Program
+*/
+Milk.java(BLC)
+--------------
+package com.sri.copy_constr;
+
+public class Milk 
+{
+  private double milkPrice;
+
+	public double getMilkPrice() 
+	{
+		return milkPrice;
+	}
+	
+	public void setMilkPrice(double milkPrice) 
+	{
+		this.milkPrice = milkPrice;
+	}
+
+	@Override
+	public String toString() {
+		return "Milk [milkPrice=" + milkPrice + "]";
+	}
+	  
+  
+  
+}
+
+Baby.java(BLC)
+---------------
+package com.sri.copy_constr;
+
+public class Baby 
+{
+  private String babyName;
+  private int babyAge;
+  private Milk milk;
+  private String milkType;
+  
+	public Baby(String babyName, int babyAge, Milk milk) //milk = m
+	{
+		super();
+		this.babyName = babyName;
+		this.babyAge = babyAge;
+		this.milk = milk;
+		
+		if(milk.getMilkPrice() > 60)
+		{
+			milkType = "Full Cream";
+		}
+		else
+		{
+			milkType = "Tonned Milk";
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "Baby [babyName=" + babyName + ", babyAge=" + babyAge + ", milk=" + milk + ", milkType=" + milkType
+				+ "]";
+	}
+  
+  
+  
+}
+
+
+
+CopyConstructor.java(ELC)
+-------------------------
+package com.sri.copy_constr;
+
+public class CopyConstructor {
+
+	public static void main(String[] args) 
+	{
+		Milk m = new Milk();
+		m.setMilkPrice(55);
+		
+		Baby baby = new Baby("Mithi", 2, m);
+		System.out.println(baby);
+
+	}
+
+}
