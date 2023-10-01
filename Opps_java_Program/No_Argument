@@ -1,0 +1,50 @@
+/*
+The constructor written by the user in the class without any parameter then it is called No argument constructor or parameter less
+constructor or zero argument constructor.
+*/
+Person.java
+------------
+
+package com.sri.no_arg_cons;
+
+public class Person 
+{
+  private Integer personId;
+  private String personName;
+  private Double personBill;
+  
+  public Person() //No-Argument Constructor
+  {
+	  personId = 111;
+	  personName = "Raj";
+	  personBill = 12890.67;
+  }
+
+	@Override
+	public String toString() 
+	{
+		return "Person [personId=" + personId + ", personName=" + personName + ", personBill=" + personBill + "]";
+	} 
+  
+}
+
+
+NoArgumentConstructor.java
+--------------------------
+package com.sri.no_arg_cons;
+
+public class NoArgumentConstructor 
+{
+	public static void main(String[] args) 
+	{
+		Person raj = new Person();
+		System.out.println(raj);
+		
+		System.out.println("............");
+		
+		Person ram = new Person();
+		System.out.println(ram);
+
+	}
+
+}
