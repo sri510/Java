@@ -1,0 +1,84 @@
+/*
+In OOP if we write everything in a single class then it is not an object oriented approach even we are creating object, It enhances tight coupling (dependency is very high).
+if we separate our classes with BLC and ELC approach then reusability of our BLC classes would be possible from same package and even from different package.
+*/
+Player.java
+------------
+package com.sri.blc_elc;
+
+//BLC
+public class Player 
+{
+  int playerId;
+  String playerName;
+  double playerPrice;
+  
+  public void acceptPlayerData(int id, String name, double price)
+  {
+	  playerId = id;
+	  playerName = name;
+	  playerPrice = price;
+  }
+  
+  public void playerInformation()
+  {
+	  System.out.println("Player Id is :"+playerId);
+	  System.out.println("Player Name is :"+playerName);
+	  System.out.println("Player Price is :"+playerPrice);
+  }
+  
+}
+
+Main.java
+----------
+package com.sri.blc_elc;
+
+//ELC
+public class Main 
+{
+	public static void main(String[] args) 
+	{
+		Player rohit = new Player();
+		rohit.acceptPlayerData(45, "Rohit Sharma", 12000.00);
+		rohit.playerInformation();
+		
+	}
+
+}
+
+
+Virat.java
+----------
+package com.sri.blc_elc;
+
+public class Virat {
+
+	public static void main(String[] args) 
+	{
+		Player virat = new Player();
+		virat.acceptPlayerData(18, "Virat Kohli", 12500.00);
+		virat.playerInformation();
+	}
+
+}
+
+
+
+In order to re-use this Player class (BLC) class, we have another class called Dhoni available in another package
+
+Dhoni.java
+-----------
+package com.sri.re_use;
+
+import com.ravi.blc_elc.Player;
+
+public class Dhoni {
+
+	public static void main(String[] args) 
+	{
+		Player dhoni = new Player();
+		dhoni.acceptPlayerData(7, "MSD", 15890.90);
+		dhoni.playerInformation();
+	}
+
+}
