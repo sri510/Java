@@ -1,0 +1,43 @@
+/*
+Data hiding means our data (variables) must be hidden from outer world that means no one can access our data directly from outside of the class.
+*/
+package com.sri.data_hiding;
+
+public class Customer 
+{
+   private double balance = 1000; //data hiding
+   
+   public void deposit(int amount)
+   {
+	   //Validate the amount
+       if(amount<=0)
+       {
+    	   System.out.println("Amount can't be deposited!!!");
+       }
+       else
+       {
+    	   balance = balance + amount;
+    	   System.out.println("Balance after deposit is :"+balance);
+       }
+   }
+   
+   public void withdraw(int amount)
+   {
+	  balance = balance - amount;
+	  System.out.println("Balance after withdraw is :"+balance);	  
+   }
+}
+
+BankingApplication.java
+------------------------
+package com.sri.data_hiding;
+
+public class BankingApplication 
+{
+	public static void main(String[] args) 
+	{
+		Customer raj = new Customer();
+		raj.deposit(3000);
+		raj.withdraw(1000);
+	}
+}
