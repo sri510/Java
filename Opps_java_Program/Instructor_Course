@@ -1,0 +1,126 @@
+/*
+Create a class instructor with attributes
+Instance variable:-
+String instructorName- private
+
+Create a parameterized constructor to initialilize all the fields.
+ 
+Create getters method for all the instance variables.
+
+
+Create another class Course with attributes
+Instance variable:-
+String courseCode - private
+String courseName - private
+Instructor instructor - private(Has-a-relation)
+
+Create a parameterized constructor to initialilize all the fields.
+
+Create getters method for all the instance variables.
+
+Create another class Main which contains main method (ELC class) which will receive all the instance variable value from BLC class.
+*/
+Course.java
+-----------
+package Oct_02;
+
+public class Course 
+{
+		private String courseCode ;
+		private String courseName  ;
+		private Instructor instructor;
+		
+		
+		public Course(String courseCode, String courseName, Instructor instructor) 
+		{
+			super();
+			this.courseCode = courseCode;
+			this.courseName = courseName;
+			this.instructor = instructor;
+		}
+
+
+		public String getCourseCode() 
+		{
+			return courseCode;
+		}
+
+
+		public void setCourseCode(String courseCode) 
+		{
+			this.courseCode = courseCode;
+		}
+
+
+		public String getCourseName() 
+		{
+			return courseName;
+		}
+
+
+		public void setCourseName(String courseName) 
+		{
+			this.courseName = courseName;
+		}
+
+
+		public Instructor getInstructor() 
+		{
+			return instructor;
+		}
+
+
+		public void setInstructor(Instructor instructor) 
+		{
+			this.instructor = instructor;
+		}
+
+
+		@Override
+		public String toString() 
+		{
+			return "Course [Course Code=" + courseCode + ", Course Name=" + courseName + ", Instructor=" + instructor + "]";
+		}
+}
+
+Instructor.java
+----------------
+package Oct_02;
+
+public class Instructor 
+{
+	private String instructorName;
+
+	public Instructor(String instructorName) {
+		super();
+		this.instructorName = instructorName;
+	}
+
+	public String getInstructorName() {
+		return instructorName;
+	}
+
+	public void setInstructorName(String instructorName) {
+		this.instructorName = instructorName;
+	}
+
+	@Override
+	public String toString() {
+		return "Instructor [Instructor Name=" + instructorName + "]";
+	}
+
+
+}
+InstructorCourse.java
+---------------------
+package Oct_02;
+
+public class InstructorCourse 
+{
+	public static void main(String[] args) {
+		Instructor i=new Instructor("Sripriya Sharma");
+		Course c= new Course("4253","JAVA",i);
+		System.out.println(c);
+
+	}
+}
