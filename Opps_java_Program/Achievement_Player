@@ -1,0 +1,120 @@
+/*Create a class Achievement.
+Instance variable:-
+String achievementName - private
+boolean isAchieved - private
+
+Create a parameterized constructor to initialilize all the fields.
+Create getters and setters method for achievementName and isAchieved.
+
+Create another class Player.
+Instance variable:-
+String username - private
+int score - private
+Achievement achievement - private(Has-a-relation).
+
+Create a parameterized constructor to initialilize all the fields.
+ 
+Create a method unlockAchievement() parameter String achivement_name.
+Access Modifier:-
+public 
+Return type:-
+void
+
+Create a method getAchievementStatus()
+Access Modifier:-
+public 
+Return type:-
+String
+
+Create another class Main which contains main method (ELC class) which will receive all the instance variable value from above class.
+// Accessing player details using getters
+// Modifying player's score using setter
+// Accessing and displaying player's updated score
+// Unlocking an achievement and displaying achievement status
+*/
+Achievement.java(BLC)
+----------------------
+package Oct_02;
+
+public class Achievement 
+{
+	private String achievementName; 
+	private boolean isAchieved;
+	
+	public Achievement(String achievementName, boolean isAchieved) {
+		super();
+		this.achievementName = achievementName;
+		this.isAchieved = isAchieved;
+	}
+
+	public String getAchievementName() {
+		return achievementName;
+	}
+
+	public void setAchievementName(String achievementName) {
+		this.achievementName = achievementName;
+	}
+
+	public boolean isAchieved() {
+		return isAchieved;
+	}
+
+	public void setAchieved(boolean isAchieved) {
+		this.isAchieved = isAchieved;
+	}
+
+	@Override
+	public String toString() {
+		return "Achievement [Achievement Name=" + achievementName + ", Is Achieved=" + isAchieved + "]";
+	}
+	
+}
+
+
+Player.java(BLC)
+-----------------
+package Oct_02;
+
+public class Player 
+{
+	private String username;
+	private int score;
+	private Achievement achievement; //Has-a-relation
+	
+	public Player(String username, int score, Achievement achievement) {
+		super();
+		this.username = username;
+		this.score = score;
+		this.achievement = achievement;
+	}
+	
+	public String getAchievementStatus()
+	{
+		return"Player[username:"+username+",score:"+score+",achievement:"+achievement+"]";
+	}
+
+	@Override
+	public String toString() {
+		return "Player [Username=" + username + ", Score=" + score + ", Achievement=" + achievement + "]";
+	}
+	
+}
+PlayerMain.java(ELC)
+--------------------
+
+package Oct_02;
+
+public class PlayerMain 
+{
+
+	public static void main(String[] args) 
+	{
+		Achievement a=new Achievement("abc",false);
+		Player p=new Player("Sripriya Sharma",05,a);
+		System.out.println(p);
+
+	}
+
+}
+
+
