@@ -1,0 +1,64 @@
+/*
+Create a class Person with instance variables name and age. Implement an instance block that prints "Person instance created".
+
+Implement a parameterized constructor that sets the instance variables name and age. Implement an instance method introduce()
+
+that prints "Hi, my name is {name} and I'm {age} years old". Create two Person objects and call the introduce() method on them.
+
+Expected Output:
+
+Person instance created
+
+Hi, my name is Naresh and I'm 23 years old
+
+Person instance created
+
+Hi, my name is Suresh and I'm 25 years old
+*/
+Person.java(BLC)
+-----------------
+public class Person {
+
+	//Declare instance variables
+	
+	String name;
+	int age;
+	
+	//instance initialization block
+	{
+	    System.out.println("Person instance created");
+	}
+	
+	//parameterized constructor to assign values to instance variables
+	public Person(String name, int age)
+	{
+	    this.name = name;
+		this.age = age;
+	}
+	
+	//instance method to display name and age
+	public void introduce() 
+	{
+	    System.out.println("Hi, my name is "+name+ " and I'm "+age+ " years old");
+	}
+  PersonInstance.java(ELC)
+  -------------------------
+	//main method to test the code
+	public static void main(String[] args) 
+	{
+		// create new object to Person class by passing variable
+		Person p=new Person("Naresh", 23);
+		
+		//call introduce method
+		p.introduce();
+		
+		//create another object to Person class by passing variable
+		Person p1=new Person("Suresh",25);
+		
+		//call introduce method
+		p.introduce();
+
+	}
+
+}
+
