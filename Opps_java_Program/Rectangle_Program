@@ -1,0 +1,59 @@
+/*
+Create a class Rectangle with instance variables width and height. Implement an instance block that initializes
+
+ the instance variables to 0. Implement a parameterized constructor that sets the instance variables width and height.
+
+ Implement an instance method getArea() that returns the area of the rectangle. Implement another instance method getPerimeter()
+
+ that returns the perimeter of the rectangle. Create a Rectangle object with width 5 and height 10 and call
+
+ the getArea() and getPerimeter() methods on it.
+
+Expected output:
+
+Area of a Rectangle = 50.0
+
+Perimeter of a Rectangle = 30.0
+*/
+public class Rectangle {
+	//Declare instance variables
+	double width;
+	double height;
+
+		
+	//instance initialization block for assigning initial values
+	{
+	    width=0;
+		height=0;
+	}
+	
+	//parameterized constructor to assign values to instance variables
+	public Rectangle(double width, double height)
+	{
+	    this.width = width;
+		this.height = height;
+		
+	}
+	
+	//instance method to calculate area of rectangle
+	public double getArea() 
+	{
+	    return width*height;
+	}
+	
+	//instance method to calculate perimeter of rectangle
+	public double getPerimeter() {
+		
+		return 2*(width+height);
+	}
+
+    //Main method to test our code
+	public static void main(String[] args) 
+	{
+	    //create an object to Rectangle class and print area and perimeter
+	    Rectangle r=new Rectangle(5, 10);
+		System.out.println("Area of a Rectangle = "+r.getArea());
+		System.out.println("Perimeter of a Rectangle = "+r.getPerimeter());
+	}
+
+}
