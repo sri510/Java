@@ -1,0 +1,76 @@
+/*
+Create a class BankAccount with instance variables balance and interestRate. Implement an instance block that initializes
+
+ the instance variable interestRate to 0.01. Implement a parameterized constructor that sets the instance variable balance.
+
+ Implement an instance method deposit(amount) that adds amount to the balance. Implement another instance method withdraw(amount)
+
+ that subtracts amount from the balance. Implement an instance method calculateInterest() that returns
+
+ the interest earned on the balance based on the interestRate. Create a BankAccount object with a balance of 1000 and call the
+
+ deposit(), withdraw(), and calculateInterest() methods on it.
+
+Expected output:
+
+Balance amount after deposit of 2500.0 rupees in the bank account is = 3500.0
+
+Balance amount after withdraw of 387.0 rupees from the bank account is = 3113.0
+
+Interest earned on balance amount is = 31.13
+*/
+public class BankAccount 
+{
+	//Declare instance variables
+	double balance;
+	double interestRate;
+	
+	
+	//instance initialization block 
+	{
+	    interestRate=0.01;	
+	}
+	
+	
+	//parameterized constructor to assign values to instance variables
+	public BankAccount(double balance) 
+	{
+	    this.balance = balance;
+		
+	
+	}
+	
+
+	//instance method to deposit the amount in the bank account and prints balance amount
+	public void deposit(double amount) 
+	{
+		System.out.println("Balance amount after deposit of "+balance+ " rupees in the bank account is = "+(balance+amount));
+		this.balance=balance+amount;
+	}
+	
+	//instance method to withdraw some amount from the bank account and prints balance amount
+	public void withdraw(double amount) 
+	{
+		System.out.println("Balance amount after withdrawl of "+balance+ " rupees in the bank account is = "+(balance-amount));
+		this.balance=balance-amount;
+	}
+	
+	//instance method to calculate interest on available balance and prints the result
+	public void calculateInterest() 
+	{
+		System.out.println("Interest earned on balance amount is = "+(interestRate*balance));
+		
+	}
+	
+	//main method to test our code
+	public static void main(String[] args) 
+	{
+
+		//create an object to BankAccount class and call methods deposit, withdraw and calculateInterest
+		BankAccount bank=new BankAccount(1000);
+		bank.deposit(2000);
+		bank.withdraw(500);
+		bank.calculateInterest();
+	}
+
+}
