@@ -1,0 +1,196 @@
+/*
+A class called Customer is given to you. 
+
+The task is to find the Applicable Credit card Type and create CardType object based on the Credit Points of a customer.
+
+Define the following for the class.
+
+Attributes : 
+
+customerName : String,private
+
+creditPoints: int,private
+
+Constructor :
+
+parameterizedConstructor: for both cusotmerName & creditPoints in that order.
+
+Methods :
+
+Name of the method : getCreditPoints
+
+Return Type : int
+
+Modifier  : public 
+
+Task : This must return creditPoints
+
+Name of the method : toString -OverRide it, 
+
+Return type : String 
+
+Task : return only customerName from this.
+
+Create another class called CardType. Define the following for the class
+
+Attributes :
+
+customer : Customer, private
+
+cardType : String, private
+
+Constructor :
+
+parameterizedConstructor: for customer and cardType attributes in that order
+
+Methods :
+
+Name of the method : toString Override this.  
+
+Return type : String
+
+Modifier : public
+
+Task : Return the string in the following format.
+
+The Customer 'Rajeev' Is Eligible For 'Gold' Card.
+
+Create One more class by name CardsOnOffer and define the following for the class.
+
+Method : 
+
+Name Of the method : getOfferedCard 
+
+Return type : CardType
+
+Modifiers: public,static
+
+Arguments: Customer object
+
+Task : 	Create and return a CardType object after logically finding Grade from creditPoints as per the below rules.
+
+Marks	 	Grade
+
+100 - 500  -  Silver
+
+501 - 1000 -  Gold
+
+1001 >    -  Platinum
+
+< 100    -  EMI
+
+Code a Main class to test the working of the above.
+*/
+Customer.java
+--------------
+package Oct_04;
+
+public class Customer 
+{
+	//Define Instance Variable
+	private String customerName;
+	private int creditPoints;
+	
+		public Customer(String customerName,int creditPoints) 
+		{
+		    //Initialize Instances Variable
+			this.customerName = customerName;
+			this.creditPoints = creditPoints;
+		
+		}
+	    //Define Getters And Setters Methods
+
+		public String getCustomerName() 
+		{
+			return customerName;
+		}
+
+		public void setCustomerName(String customerName) 
+		{
+			this.customerName = customerName;
+		}
+
+		public int getCreditPoints() 
+		{
+			return creditPoints;
+		}
+
+		public void setCreditPoints(int creditPoints) 
+		{
+			this.creditPoints = creditPoints;
+		}
+
+		@Override
+		public String toString() {
+			return "Customer [customerName=" + customerName + ", creditPoints=" + creditPoints + "]";
+		}
+		
+		
+}
+
+CardType.java
+--------------
+package Oct_04;
+
+public class CardType 
+{
+	//Define Instance Variable
+	private Customer customer;
+	private String cardType;
+
+		public CardType(Customer customer, String cardType) 
+		{
+			this.customer = customer;
+			this.cardType = cardType;
+		}
+		@Override
+		public String toString() 
+		{
+			return "The Customer '" + customer.toString() + "' Is Eligible For '" + cardType + "' Card" ;
+		}	
+}
+
+CardOnOffer.java
+-----------------
+package Oct_04;
+
+public class CardsOnOffer 
+{
+	public static CardType getOfferedCard (Customer customer) 
+	{
+		int creditPoints=customer.getCreditPoints();
+		String cardType=null;
+		if(creditPoints>=100 && creditPoints<=500)
+			{
+			System.out.println("Silver");
+		    }
+		else if(creditPoints>=501 && creditPoints<=1000)
+			{
+			cardType= "Gold";
+			}
+		else if(creditPoints>1000)
+			{
+			cardType= "Platinum";
+			}
+		else
+			{
+			cardType= "EMI";
+			}
+		return new CardType(customer, cardType);	
+	}
+}
+CreditCardCustomer.java
+------------------------
+
+package Oct_04;
+
+public class CreditCardCustomer {
+
+	public static void main(String[] args) 
+	{
+		Customer customer=new Customer("Rajeev",950);
+		CardType cardtype= CardsOnOffer.getOfferedCard(customer);
+		System.out.println(cardtype);
+	}
+}
+
