@@ -1,0 +1,139 @@
+/*
+Build a BudgetPlanner class to track income, expenses, and generate budget reports.
+
+1.Create a BLC class Expense
+Instance Variable:-
+String description,private
+double amount,private
+
+Generate Getters for all the instance variable.
+Create parameterise constructor to initialise the instance variable.
+
+2.Create another BLC class BudgetPlanner
+Instance Variable:-
+double totalIncome,private
+double totalExpenses,private
+
+Create non-parameterise constructor and initialise instance variable with default values.
+
+Create an instance method addIncome()with parameter income type double
+Access modifier:-
+public 
+Return type:-
+void
+
+//Note above method will add the income on totalIncome
+
+Create an instance method addExpense() with parametre String-discription and double-amount.
+// In this method Create an object of class Expense to initialse the instance variable which is present in Expense class
+//also add expences in the instance variable using Expence class object
+and pass the referance to the generateExpenseReport()
+Access Modifier:-
+public 
+Return Type:-
+void
+
+Create an instance method generateExpenseReport() with parameter Expence class to print the details.
+Access Modifier:-
+public 
+Return Type:-
+void
+
+Create an instance method generateBudgetReport() to print the above detials.
+Access Modifier:-
+public 
+Return Type:-
+void
+
+3.Create a class MainExpence which contains main method.
+//Create object for class BudgetPlanner to call the above methods.
+
+Output:-
+Expense: Groceries - $500.0
+Expense: Utilities - $300.0
+Expense: Rent - $700.0
+Income: $2000.0
+Total Expenses: $1500.0
+Remaining Budget: $500.0
+*/
+
+Expense.java
+-------------
+package Oct_04;
+
+public class Expense 
+{
+	private String description;
+	private double amount;
+	
+	public String getDescription() 
+	{
+		return description;
+	}
+	public double getAmount() 
+	{
+		return amount;
+	}
+	public Expense(String description, double amount) 
+	{
+		this.description = description;
+		this.amount = amount;
+	}
+}
+
+BudgetPlanner.java
+-------------------
+package Oct_04;
+
+public class BudgetPlanner 
+{
+	private double totalIncome;
+	private double totalExpenses;
+	
+	public BudgetPlanner() 
+	{
+		totalIncome=0.0;
+		totalExpenses=0.0;	
+	}
+	
+	public void addIncome(double income)
+	{
+		totalIncome+=income;
+	}
+	
+	public void addExpense(String description, double amount)
+	{
+		Expense e=new Expense(description, amount);
+		totalExpenses+=e.getAmount();
+		generateExpenseReport(e);
+	}
+	
+	public void generateExpenseReport(Expense e)
+	{
+		
+	System.out.println(e.getDescription()+""+e.getAmount());
+	}
+	
+	public void BudgetReport()
+	{
+		System.out.println("Income : $"+totalIncome);
+		System.out.println("Total Expenses : $"+totalExpenses);
+		System.out.println("Remaining Budget : $"+(totalIncome-totalExpenses));
+	}
+}
+
+MainExpence.java
+-----------------
+package Oct_04;
+public class MainExpence 
+{
+public static void main(String[] args) 
+	{
+		BudgetPlanner b=new BudgetPlanner();
+		b.addIncome(2000);
+		b.addExpense("Expense: Groceries - $", 500.0);
+		b.addExpense("Expense: Utilities - $", 300.0);
+		b.addExpense("Expense: Rent - $", 700.0);
+		b.BudgetReport();
+	}
+}
