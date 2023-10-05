@@ -1,0 +1,94 @@
+/*
+Build a HeartRateMonitor class to simulate heart rate monitoring and alerts.
+
+1.Create a class HeartRateSensor
+Instance variable:-
+int heartRate,private
+
+Create a non-parameterise constructor to intialize instance variable by default values.
+Generate Getters and Setters method for instance variable.
+
+Craete an instance method monitorHeartRate()
+// Simulate monitoring heart rate, e.g., by generating random values
+// For simplicity, we'll just generate a random heart rate between 60 and 100
+randomHeartRate = (int) (Math.random() * 41) + 60; and set the value to setter method.
+
+2.Create a class HeartRateMonitor inherite HeartRateSensor class here.
+Instance variable:-
+int lowerLimit,private
+int upperLimit,private
+
+Create parameterise constructor to initialise instance variable.
+
+Create an instance method checkHeartRate() and take a variable currentHeartRate type-int to get the heartRate from HeartRateSensor.
+//If currentHeartRate is less-then lowerLimit or currentHeartRate is greater-then 
+// then prints "Alert: Heart rate out of range! Current heart rate: " with currentHeartRate
+// Otherwise prints "Heart rate within the normal range. Current heart rate: " with currentHeartRate
+
+3. Create an ELC class MainHeart which contains main method  to test your code.
+// Create an object HeartRateMonitor with lower and upper limits
+// Simulate monitoring heart rate
+// Check if the heart rate is within the normal range
+
+Output:-
+Alert: Heart rate out of range! Current heart rate: 102
+*/
+package Oct_05;
+public class HeartRateSensor 
+{
+	private int heartRate;
+	public HeartRateSensor()
+	{
+		this.heartRate=heartRate;
+	}
+	public int getHeartRate() {
+		return heartRate;
+	}
+	public void setHeartRate(int heartRate) {
+		this.heartRate = heartRate;
+	}
+	public void monitorHeartRate()
+	{
+		int randomHeartRate = (int) (Math.random() * 41) + 60;
+		setHeartRate(randomHeartRate);
+	}
+}
+
+package Oct_05;
+
+public class HeartRateMonitor extends HeartRateSensor 
+{
+	private int lowerLimit;
+	private int upperLimit;
+	public HeartRateMonitor(int lowerLimit, int upperLimit) 
+	{
+		super();
+		this.lowerLimit = lowerLimit;
+		this.upperLimit = upperLimit;
+	}
+
+	public void checkHeartRate()
+	{
+		monitorHeartRate();
+		int currentHeartRate=getHeartRate();
+	if(currentHeartRate<lowerLimit || currentHeartRate>upperLimit)
+	{
+		System.out.println("Alert: Heart rate out of range! Current heart rate: "+currentHeartRate);
+	}
+	else
+	{
+		System.out.println("Heart rate within the normal range Current heart rate: "+currentHeartRate);
+	}
+	}
+}
+
+package Oct_05;
+
+public class MainHeart {
+
+	public static void main(String[] args) 
+	{
+		HeartRateMonitor h = new HeartRateMonitor(60, 100);
+		h.checkHeartRate();
+	}
+}
