@@ -1,0 +1,177 @@
+/*
+A class Student is given to you. It contains the following implementation.
+
+Instance Variables: studentId : int , name :String , examFee:double
+
+Methods: displayDetails(): String , payFee() :double
+
+Define parameterized constructor and a toString method.
+
+Create two sub classes of Student called DayScholar and Hosteller. Add the following
+
+implementations to each class.
+
+DayScholar:
+
+Instance Variables : transportFee:double ,
+
+Methods: Define parameterized constructor
+
+Hosteller:
+
+Instance Variables: hostelFee :double
+
+Methods: Define parameterized constructor 
+
+Add the following methods in BOTH classes.
+
+Method: displayDetails(): This method should return a string containing the details of the student
+
+in the following format:
+
+Student [name=John Smith,studentId=123,examFee=100.0] OR
+
+DayScholar[transportFee=500, name=John Smith,studentId=123,examFee=100.0] and so on.
+
+Method: payFee(amount): This method takes amount as parameter that represents the fee
+
+provided. You must calculate and then return the remaining amount paid in excess. If excess is
+
+paid, the returned amount will be negative. The total fees that each student must pay must
+
+include all the fees applicable to that Student(examFees, transportFees, hostelFees as applicable).
+
+Subtract the given amount from total fee for each student and return the remaining amount.
+
+An ELC class Tester is given to you with a main method. Use this class to test your solution's
+
+classes and methods.
+
+Example Output:
+
+Student[name=John Smith,studentId=1,examFee=25000.0]
+
+DayScholar[TransportFee=5000.0,name=Brian Lara,studentId=2,examFee=25000.0]
+
+Remaining amount to pay is: 12000.0
+
+Hosteller[HostelFee=8000.0,name=Virat Kohli,studentId=3,examFee=25000.0]
+
+All Fees are clear.
+*/
+class Student
+{
+	//Declare class variables
+	
+	int studentId;
+	String name; 
+	double examFee;
+	
+	//parameterized constructor to assign values to instance variables
+	
+	public Student(int studentId, String name, double examFee) 
+	{
+		super();
+		this.studentId = studentId;
+		this.name = name;
+		this.examFee = examFee;
+	}
+	
+	//this method is used to return class details using instance variables
+
+	@Override
+	public String toString() 
+	{
+		return "Student [studentId=" + studentId + ", name=" + name + ", examFee=" + examFee + "]";
+	}
+	
+	//this method is used to call toString method and return the class data
+	public String displayDetails() 
+	{
+		return "";
+	}
+	
+}
+
+//Hosteller is a subclass of Student class
+class Hosteller extends Student
+{
+		double hostelFee;
+	
+	public Hosteller(int studentId, String name, double examFee, double hostelFee)
+	 
+	{
+		super(studentId, name, examFee);
+		this.hostelFee = hostelFee;
+	}
+	public String displayDetails() 
+	{
+		return "Hosteller [studentId=" + studentId + ", name=" + name + ", examFee=" + examFee + ", hostelFee="
+				+ hostelFee + "]";	
+		
+	}
+	
+	public void payFee(double amount) 
+	{
+		
+         double totalFee=hostelFee+examFee;
+         double remainingAmount=totalFee-amount;
+         if(remainingAmount<=0)
+         {
+        	 System.out.println("all fees are cleared...");
+         }
+         else
+         System.out.println("remaining amount:  "+remainingAmount);
+	}
+}
+
+//DayScholar is a subclass of Student class
+class DayScholar extends Student
+{
+	double transportFee;		
+	DayScholar(int studentId,String name,double examFee,double transportFee)
+	{
+		super(studentId, name, examFee);
+		this.transportFee=transportFee;
+	}
+	public String displayDetails()
+	{
+		return "DayScholar [studentId=" + studentId + ", name=" + name + ", examFee=" + examFee + ", transportFee="+ transportFee + "]";
+	}
+	public void payFee(double amount)
+	{
+		double totalFee=transportFee+examFee;
+	    double remainingAmount=totalFee-amount;
+	    if(remainingAmount<=0)
+	    {
+	    	System.out.println("all fees are cleared...");
+	    }
+	    else
+	    	System.out.println("remaining amount:  "+remainingAmount);
+	 }
+}
+//ELC class to test our code
+public class TestStudent 
+{
+
+	public static void main(String[] args) 
+	{
+		//create an object to Student by passing detals like (1, "John Smith", 25000)
+		Student s=new Student(1,"john",25000);
+        s.displayDetails();
+        System.out.println(s.displayDetails());
+        	
+        DayScholar d=new DayScholar(2, "Brian Lara", 25000, 5000);
+          
+        System.out.println(d.displayDetails());
+			
+        d.payFee(18000);
+			
+        Hosteller h=new Hosteller(3, "Virat Kohli", 25000, 8000);
+            
+        System.out.println(h.displayDetails());
+			
+        h.payFee(33100);
+	}
+
+}
