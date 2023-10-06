@@ -1,0 +1,44 @@
+/*Create a class with a method to find the difference between the sum of the squares and the square of the sum of the first n natural numbers.
+
+Method Description :-
+
+Method Name 	 calculateDifference 
+
+Access Modifier public,static	
+
+Argument 	 int n 
+
+Return Type 	 int 
+
+Logic 	Find the difference between the sum of the squares of the first n natural numbers and the square of their sum. 
+
+For Example if n is 10,you have to find 
+
+(1^2+2^2+3^2+….9^2+10^2)- 
+
+(1+2+3+4+5…+9+10)^2 
+*/
+import java.util.Scanner;
+class Diff{
+    public static int calculateDifference(int n){
+        int sum1=0,sum2=0;
+		for(int i=1;i<=n;i++) {
+			sum1=sum1+i*i;//1+4+9+16=30
+			sum2=sum2+i;//1+2+3+4=10
+		}
+		sum2=sum2*sum2;
+		return sum1-sum2;
+    }
+}
+public class MyProgram
+{
+    public static void main(String[] args)
+    {
+           	Scanner sc=new Scanner(System.in);
+    	System.out.println("Enter the number : ");
+    	int n=sc.nextInt();
+    	int result=Diff.calculateDifference(n);
+    	System.out.println(result);
+ 
+    }
+}
