@@ -1,0 +1,44 @@
+/*
+WAP in Java that describes instance blocks are executed from top to bottom.
+*/
+Test.java
+----------
+package com.sri.instance_block;
+
+public class Test 
+{
+   int x;
+   
+   public Test()
+   {
+	   System.out.println(x);
+   }
+   
+   {
+	   x = 100;
+	   System.out.println(x);
+   }
+   
+   {
+	   x = 200;
+	   System.out.println(x);
+   }
+   
+   {
+	   x = 300;
+	   System.out.println(x);
+   }  
+   
+}
+
+InstanceBlock2.java
+-------------------
+package com.sri.instance_block;
+
+public class InstanceBlock2 {
+
+	public static void main(String[] args) 
+	{
+		new Test();
+	}
+}
