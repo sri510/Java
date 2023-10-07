@@ -1,0 +1,83 @@
+/*
+Program on super keyword using Hierarchical Inheritance 
+*/
+
+Employee.java
+-------------
+package com.nit.super_hierarchical;
+
+public class Employee 
+{
+   protected int employeeId;
+   protected String employeeName;
+   protected String employeeRole;
+   
+	public Employee(int employeeId, String employeeName, String employeeRole) {
+		super();
+		this.employeeId = employeeId;
+		this.employeeName = employeeName;
+		this.employeeRole = employeeRole;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [employeeId=" + employeeId + ", employeeName=" + employeeName + ", employeeRole="
+				+ employeeRole + "]";
+	}
+}
+
+Manager.java
+------------
+package com.nit.super_hierarchical;
+
+public class Manager extends Employee
+{
+	protected double managerSalary;
+	
+  
+    public Manager(int employeeId, String employeeName, String employeeRole, double managerSalary) {
+		super(employeeId, employeeName, employeeRole);
+		this.managerSalary = managerSalary;
+	}
+
+
+	@Override
+	public String toString() {
+		return super.toString()+"Manager [managerSalary=" + managerSalary + "]";
+	}
+}
+
+HR.java
+--------
+package com.nit.super_hierarchical;
+
+public class HR  extends Employee 
+{
+  protected double hrSalary;
+
+public HR(int employeeId, String employeeName, String employeeRole, double hrSalary) {
+	super(employeeId, employeeName, employeeRole);
+	this.hrSalary = hrSalary;
+}
+
+@Override
+public String toString() {
+	return super.toString()+"HR [hrSalary=" + hrSalary + "]";
+}
+}
+
+EmployeeDemo.java
+------------------
+package com.nit.super_hierarchical;
+
+public class EmployeeDemo {
+
+	public static void main(String[] args) 
+	{
+		Manager raj = new Manager(101,"Raj","Manager",80000);
+		System.out.println(raj);
+		
+		HR sweta = new HR(201, "Sweta", "HR", 120000);
+		System.out.println(sweta);
+	}
+}
