@@ -1,0 +1,48 @@
+/*
+WAP in java to implement Single Level Inheritance (Only Basic)
+*/
+Super.java
+-----------
+package com.sri.inheritance;
+
+public class Super 
+{
+  protected int x;
+  protected int y;
+  
+  public void setSuperData(int x, int y)
+  {
+	  this.x= x;
+	  this.y = y;
+  }
+  
+}
+
+Sub.java
+---------
+package com.sri.inheritance;
+
+public class Sub extends Super
+{
+   public void showData()
+   {
+	   System.out.println("x value is :"+x);
+	   System.out.println("y value is :"+y);
+   }
+}
+
+Main.java
+---------
+package com.sri.inheritance;
+
+public class Main 
+{
+	public static void main(String[] args) 
+	{
+		Sub s = new Sub();
+		s.setSuperData(100, 200);
+		s.showData();
+
+	}
+
+}
