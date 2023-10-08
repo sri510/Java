@@ -1,0 +1,54 @@
+/*
+WAP in java to implement Single level inheritance :
+----------------------------------------------------
+Writing multiple classes in a single file (Not recommended)
+*/
+
+SingleLevelInheritance.java
+---------------------------
+package com.srvi.single_lev;
+
+class Emp
+{
+  protected int employeeNumber;
+  protected String employeeName;
+  protected double employeeSalary;
+  
+	public void setEmp(int employeeNumber, String employeeName, double employeeSalary) 
+	{
+		this.employeeNumber = employeeNumber;
+		this.employeeName = employeeName;
+		this.employeeSalary = employeeSalary;
+	} 
+  
+}
+class Pemp extends Emp
+{
+	protected String department;
+	protected String designation;
+	
+	public void setPemp(String department, String designation) 
+	{
+		this.department = department;
+		this.designation = designation;
+	}
+
+	@Override
+	public String toString() 
+	{
+		return "Pemp [department=" + department + ", designation=" + designation + ", employeeNumber=" + employeeNumber
+				+ ", employeeName=" + employeeName + ", employeeSalary=" + employeeSalary + "]";
+	}	
+}
+
+
+public class SingleLevelInheritance 
+{
+	public static void main(String[] args) 
+	{
+		Pemp pemp = new Pemp();
+		pemp.setEmp(101, "Raj", 80000.89);	
+		pemp.setPemp("IT", "Developer");
+		System.out.println(pemp);
+	}
+}
