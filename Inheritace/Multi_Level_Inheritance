@@ -1,0 +1,39 @@
+/*
+WAP in multilevel Inheritance :
+-------------------------------
+*/
+MultiLevelInheritance.java
+--------------------------
+package com.ravi.multilevel;
+
+class GrandFather
+{
+	public void land()
+	{
+		System.out.println("1600 SQFT land");
+	}
+}
+class Father extends GrandFather
+{
+	public void house()
+	{
+		System.out.println("3 BHK house");
+	}
+}
+
+class Son extends Father
+{
+	public void car()
+	{
+		System.out.println("Audi car");
+	}
+}
+
+public class MultiLevelInheritance 
+{
+	public static void main(String[] args) 
+	{
+		Son s1 = new Son();
+		s1.land();  s1.house();  s1.car();
+	}
+}
