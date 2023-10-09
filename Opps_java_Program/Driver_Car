@@ -1,0 +1,155 @@
+/*
+Create a Java (BLC)class named Employee with following attributes:
+private String name 
+private int age 
+private double salary and 
+private String department
+
+Implement a parameterised constructor to initialize all the instance variable of Employee.
+Implement a copy constructor for the Employee class that takes a Employee object and initialize the new Employee object with the same attributes.
+
+Take a pair of setter and getter method for all the instance variables.
+In the Employee class, create a method named raiseSalary(double percentage)that increases the salary of the employee by the specified percentage.
+
+Create a ELC class and create Employee object and sets its attributes. 
+Then, use the raiseSalary method to increase the employee's salary by 10%. Create a copy of the Employee object using the copy constructor and 
+print the attributes of both the original and the copy of the Employee objects to confirm that the copy constructor works correctly and that the
+raiseSalary method did not affect the attributes of the copy of the Employee object.
+*/
+Car.java
+---------
+package Oct_09;
+
+public class Car 
+{
+	private String brand;
+	private String model;
+	private int year;
+	private Driver driver;
+	public Car(String brand, String model, int year, Driver driver) 
+	{
+		super();
+		this.brand = brand;
+		this.model = model;
+		this.year = year;
+		this.driver = driver;
+	}
+	
+	public Car(Car otherCar) 
+	{
+        this.brand = otherCar.brand;
+        this.model = otherCar.model;
+        this.year = otherCar.year;
+        this.driver = new Driver(otherCar.driver.getName(), otherCar.driver.getAge());
+    }
+
+	public String getBrand() 
+	{
+		return brand;
+	}
+
+	public void setBrand(String brand) 
+	{
+		this.brand = brand;
+	}
+
+	public String getModel() 
+	{
+		return model;
+	}
+
+	public void setModel(String model) 
+	{
+		this.model = model;
+	}
+
+	public int getYear() 
+	{
+		return year;
+	}
+
+	public void setYear(int year) 
+	{
+		this.year = year;
+	}
+
+	public Driver getDriver() 
+	{
+		return driver;
+	}
+
+	public void setDriver(Driver driver) 
+	{
+		this.driver = driver;
+	}
+	
+	public void changeDriver(Driver newDriver) 
+	
+	{
+        this.driver = newDriver;
+    }
+
+	@Override
+	public String toString() 
+	{
+		return "Car [Brand = " + brand + ", Model = " + model + ", Year = " + year + ", Driver = " + driver + "]";
+	}
+}
+
+Driver.java
+------------
+package Oct_09;
+
+public class Driver 
+{
+	private String name;
+	private int age;
+	
+	public Driver(String name, int age) 
+	{
+		this.name=name;
+		this.age=age;
+	}
+	public String getName() 
+	{
+		return name;
+	}
+	public void setName(String name) 
+	{
+		this.name = name;
+	}
+	public int getAge() 
+	{
+		return age;
+	}
+	public void setAge(int age) 
+	{
+		this.age = age;
+	}
+	@Override
+	public String toString() 
+	{
+		return "Driver [Name = " + name + ", Age = " + age + "]";
+	}	
+}
+
+
+Main.java
+----------
+package Oct_09;
+
+public class Main 
+{
+
+	public static void main(String[] args) 
+	{
+		Driver d = new Driver("Shubham Kr. Mishra", 27);
+        Car c = new Car("Toyota", "2.0L TNGA", 2023, d);
+        System.out.println(c);
+        Driver d1 = new Driver("Sripriya Sharma", 25);
+        Car c1 = new Car("Audi", "RS Q8", 2023, d1);
+        c1.changeDriver(d1);
+        System.out.println(c1);	
+    }
+
+}
