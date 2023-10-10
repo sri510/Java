@@ -1,0 +1,174 @@
+/*
+Develop a TicketBookingSystem class for booking tickets for various modes of transportation.
+
+1.Create a class Ticket
+
+Instance variable:-
+
+String source,private
+
+String destination,private
+
+int price,private
+
+Create a parameteries constructor to initialise the instance variable.
+
+Create an instance method displayTicketDetails() to print the above variable's.
+
+2.Create a class TrainTicket inherite Ticket class here.
+
+Instance Variable:-
+
+String trainNumber,private
+
+Create a perameterise constructor to initialise the instance variable.
+
+Also use super to intialise the parent class variable.
+
+Override the instance method which is present in Ticket class displayTicketDetails() to print the above variable and use super to print the parent class details.
+
+3.Create a class BusTicket inherite Ticket class here.
+
+Instance variable:-
+
+String busCompany,private
+
+Create a perameterise constructor to initialise the instance variable.
+
+Also use super to intialise the parent class variable.
+
+Override the instance method which is present in Ticket class  displayTicketDetails() to print the above variable and use super to print the parent class details.
+
+4.Create a class FlightTicket inherite Ticket class here.
+
+Instance variable:-
+
+String flightNumber,private
+
+Create a perameterise constructor to initialise the instance variable.
+
+Also use super to intialise the parent class variable.
+
+Override the instance method which is present in Ticket class  displayTicketDetails() to print the above variable and use super to print the parent class details.
+
+5.Create an ELC class TicketBookingSystem which contains main method to test your code.
+
+//Create object's for class TrainTicket,BusTicket and FlightTicket
+
+//call the methods those are present in above classes.
+
+Output:-
+
+Train Ticket Details:
+
+Source: City A
+
+Destination: City B
+
+Price: $50
+
+Train Number: 123
+
+Bus Ticket Details:
+
+Source: City X
+
+Destination: City Y
+
+Price: $30
+
+Bus Company: XYZ Bus Company
+
+Flight Ticket Details:
+
+Source: City P
+
+Destination: City Q
+
+Price: $200
+
+Flight Number: ABC123
+*/
+class Ticket {
+	private String source;
+    private String destination;
+    private int price;
+
+    public Ticket(String source, String destination, int price) {
+        this.source = source;
+        this.destination = destination;
+        this.price = price;
+    }
+
+    public void displayTicketDetails() {
+        System.out.println("Source: " + source);
+        System.out.println("Destination: " + destination);
+        System.out.println("Price: $" + price);
+    }
+
+}
+class TrainTicket extends Ticket{
+	private String trainNumber;
+
+    public TrainTicket(String source, String destination, int price, String trainNumber) {
+        super(source, destination, price);
+        this.trainNumber = trainNumber;
+    }
+
+    @Override
+    public void displayTicketDetails() {
+        super.displayTicketDetails();
+        System.out.println("Train Number: " + trainNumber);
+    }
+
+}
+
+class BusTicket extends Ticket {
+    private String busCompany;
+
+    public BusTicket(String source, String destination, int price, String busCompany) {
+        super(source, destination, price);
+        this.busCompany = busCompany;
+    }
+
+    @Override
+    public void displayTicketDetails() {
+        super.displayTicketDetails();
+        System.out.println("Bus Company: " + busCompany);
+    }
+}
+class FlightTicket extends Ticket
+{
+    private String flightNumber;
+
+    public FlightTicket(String source, String destination, int price, String flightNumber) {
+        super(source, destination, price);
+        this.flightNumber = flightNumber;
+    }
+
+    @Override
+    public void displayTicketDetails() {
+        super.displayTicketDetails();
+        System.out.println("Flight Number: " + flightNumber);
+    }
+
+}
+
+public class MyProgram
+{
+    public static void main(String[] args)
+    {
+       TrainTicket trainTicket = new TrainTicket("City A", "City B", 50, "123");
+        BusTicket busTicket = new BusTicket("City X", "City Y", 30, "XYZ Bus Company");
+        FlightTicket flightTicket = new FlightTicket("City P", "City Q", 200, "ABC123");
+
+        System.out.println("Train Ticket Details:");
+        trainTicket.displayTicketDetails();
+
+        System.out.println("\nBus Ticket Details:");
+        busTicket.displayTicketDetails();
+
+        System.out.println("\nFlight Ticket Details:");
+        flightTicket.displayTicketDetails();
+    }
+}
