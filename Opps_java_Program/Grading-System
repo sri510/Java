@@ -1,0 +1,122 @@
+/*
+Develop a GradingSystem class to calculate GPA and generate transcripts.
+
+1.Create a class Student
+
+Instance variable:-
+
+String name,protected
+
+int numCourses,protected
+
+int totalGradePoints,protected
+
+Create a parameterise constructor using name only other variable intialise with default values.
+
+Create an instance method addGrade() with parameter grade type-int to add grade's into totalgrade or numCourses are incresing.
+
+Create a method calculateGPA() if numCourses is 0 then return 0 otherwise
+
+return (double) totalGradePoints / numCourses;
+
+Create an instance generateTranscript() this method will print the above details.
+
+2.Create a class UndergraduateStudent inherite Student class here.
+
+Create a perameterise constructor to initialise parent class constructor using super.
+
+3.Create a class GraduateStudent inherite Student class here.
+
+Create a perameterise constructor to initialise parent class constructor using super.
+
+4. Creata a class GradingSystem which contains main method to test your code.
+
+//Create object for UndergraduateStudent and GraduateStudent class to pass the values into the constructor
+
+//using reference call the methods.
+
+Output:-
+
+Generating Undergraduate Transcript:
+
+Transcript for Alice
+
+Number of Courses: 3
+
+Total Grade Points: 253
+
+GPA: 84.33333333333333
+
+Generating Graduate Transcript:
+
+Transcript for Bob
+
+Number of Courses: 3
+
+Total Grade Points: 276
+
+GPA: 92.0
+*/
+class Student
+{
+	 protected String name;
+	    protected int numCourses;
+	    protected int totalGradePoints;
+
+	    public Student(String name) {
+	        this.name = name;
+	        this.numCourses = 0;
+	        this.totalGradePoints = 0;
+	    }
+
+	    public void addGrade(int grade) {
+	        totalGradePoints += grade;
+	        numCourses++;
+	    }
+
+	    public double calculateGPA() {
+	        if (numCourses == 0) {
+	            return 0;
+	        }
+	        return (double) totalGradePoints / numCourses;
+	    }
+
+	    public void generateTranscript() {
+	        System.out.println("Transcript for " + name);
+	        System.out.println("Number of Courses: " + numCourses);
+	        System.out.println("Total Grade Points: " + totalGradePoints);
+	        System.out.println("GPA: " + calculateGPA());
+	    } 
+}
+class UndergraduateStudent extends Student {
+    public UndergraduateStudent(String name) {
+        super(name);
+    }
+}
+class GraduateStudent extends Student
+{
+	public GraduateStudent(String name) {
+        super(name);
+    }
+}
+public class GradingSystem
+{
+    public static void main(String[] args)
+    {
+		 UndergraduateStudent u = new UndergraduateStudent("Alice");
+	        u.addGrade(90);
+	        u.addGrade(80);
+	        u.addGrade(83);
+
+	        GraduateStudent g = new GraduateStudent("Bob");
+	        g.addGrade(95);
+	        g.addGrade(89);
+	        g.addGrade(92);
+
+	        System.out.println("Generating Undergraduate Transcript:");
+	        u.generateTranscript();
+
+	        System.out.println("\nGenerating Graduate Transcript:");
+	        g.generateTranscript();
+     }
+}
