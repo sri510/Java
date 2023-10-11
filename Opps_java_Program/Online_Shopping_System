@@ -1,0 +1,152 @@
+/*
+Online Shopping System
+You are tasked with implementing an online shopping system that allows customers to add products to their shopping carts and perform checkouts. You need to create three classes: Product, ShoppingCart, and Customer.
+
+Product Class
+Create a Product class that represents a product available for purchase. The class should have the following attributes and methods:
+
+Attributes:
+
+name (private): A string representing the name of the product.
+price (private): A double representing the price of the product.
+Methods:
+
+Product(String name, double price): Constructor that initializes the name and price attributes.
+getName(): Returns the name of the product.
+getPrice(): Returns the price of the product.
+ShoppingCart Class
+Create a ShoppingCart class that represents a customer's shopping cart. The class should have the following attributes and methods:
+
+Attributes:
+
+itemCount (private): An integer representing the number of items in the cart.
+totalAmount (private): A double representing the total amount of the items in the cart.
+products (private): An array of Product objects representing the products in the cart.
+Methods:
+
+ShoppingCart(): Constructor that initializes the itemCount to 0, totalAmount to 0, and creates an array of Product objects with a maximum capacity of 10.
+addProduct(Product product): Adds a product to the cart. If the cart is not full, updates the products array and increments itemCount and totalAmount.
+getTotalAmount(): Returns the total amount of the items in the cart.
+Customer Class
+Create a Customer class that represents a customer using the online shopping system. The class should have the following attributes and methods:
+
+Attributes:
+
+name (private): A string representing the name of the customer.
+cart (private): A ShoppingCart object representing the customer's shopping cart.
+Methods:
+
+Customer(String name): Constructor that initializes the name and creates a new ShoppingCart object for the customer.
+addToCart(Product product): Adds a product to the customer's shopping cart.
+checkout(): Performs a checkout by displaying the customer's name and the total amount of their shopping cart.
+OnlineShoppingSystem Class
+Create an OnlineShoppingSystem class with a main method to simulate the online shopping scenario. In the main method:
+
+Create three Product objects with different names and prices.
+Create two Customer objects with different names.
+Have each customer add products to their shopping carts.
+Have each customer perform a checkout.
+Note: Ensure that the program demonstrates encapsulation by accessing the attributes of the classes only through their public methods.
+
+After implementing the classes and main method, run the program to see the interactions between customers, products, and shopping carts in an online shopping system.
+*/
+class Product {
+ 
+ private String name;
+	private double price;
+	
+	public Product(String name, double price) 
+	{
+		super();
+		this.name = name;
+		this.price = price;
+	}
+
+	public String getName() 
+	{
+		return name;
+	}
+
+	public double getPrice() 
+	{
+		return price;
+	}
+ 
+}
+
+class ShoppingCart {
+   
+  private int itemCount;
+	private double totalAmount;
+	private Product[] products;
+	
+	public ShoppingCart()
+	{
+		itemCount = 0;
+        totalAmount = 0;
+        products = new Product[10];
+	}
+	
+	public void addProduct(Product product) 
+	{
+        if (itemCount < 10) 
+        {
+            products[itemCount++] = product;
+            totalAmount += product.getPrice();
+            System.out.println(product.getName() + "Added To Cart.");
+        } 
+        else 
+        {
+        	System.out.println("Cart is full. Cannot add more products.");        
+        }	
+     }
+	
+	public double getTotalAmount() 
+	{
+        return totalAmount;
+	}
+    
+}
+
+class Customer {
+   
+   private String name;
+    private ShoppingCart cart;
+
+    public Customer(String name) 
+    {
+        this.name = name;
+        cart = new ShoppingCart();
+    }
+
+    public void addToCart(Product product) 
+    {
+        cart.addProduct(product);
+    }
+
+    public void checkout() 
+    {
+        System.out.println("\nCustomer: " + name);
+        System.out.println("Total Amount: Rs." + cart.getTotalAmount());
+    }
+}
+
+public class OnlineShoppingSystem {
+    public static void main(String[] args) {
+       
+       Product Laptop = new Product("Laptop ", 150000);
+        Product iPhone = new Product("iPhone ", 75000);
+        Product Macbook = new Product("Macbook ", 120000);
+
+        Customer customer1 = new Customer("Sripriya");
+        customer1.addToCart(Laptop);
+        customer1.addToCart(iPhone);
+        customer1.checkout();
+        
+        
+        Customer customer2 = new Customer("Surbhi");
+        customer2.addToCart(iPhone);
+        customer2.addToCart(Macbook);
+        customer2.checkout();
+	}
+}
