@@ -1,0 +1,101 @@
+/*
+An electronics shop has announced a special discount on the purchase of Laptops as given below:
+
+
+
+Category                        Discount on Laptop
+
+
+
+Up to ₹25,000                     5.0%
+
+₹25,001 - ₹50,000               7.5%
+
+₹50,001 - ₹1,00,000            10.0%
+
+More than ₹1,00,000           15.0%
+
+
+
+Define a class Laptop described as follows:
+
+Data members/instance variables:
+
+name
+price
+dis
+amt
+Member Methods:
+
+A parameterised constructor to initialize the data members
+To accept the details (name of the customer and the price)
+To compute the discount
+To display the name, discount and amount to be paid after discount.
+Write a main method to create an object of the class and call the member methods.
+*/
+//Import file here
+import java.util.Scanner;
+
+class Laptop
+{
+   //Define Instance Variable
+	private String name;
+	private double price;
+	private double dis;
+	private double amt;
+	
+	public Laptop(String name, int price) 
+	{
+		//Initialize Instances Variable
+		super();
+		this.name = name;
+		this.price = price;
+	}
+	public void compute() 
+	{
+        //Write Logic Here
+		if(price<=25000)
+		{
+			dis=(5.0/100*price);
+			amt=price-dis;
+		}
+		else if(price>25000||price<50000)
+		{
+			dis=(7.5/100*price);
+			amt=price-dis;
+		}
+		else if(price>50000||price<100000)
+		{
+			dis=(10.0/100*price);
+			amt=price-dis;
+		}
+		else if(price>100000)
+		{
+			dis=(15.0/100*price);
+			amt=price-dis;
+		}
+    }
+    
+    public void display() 
+    {
+       //Write Logic Here
+    	compute();
+    	System.out.println("Laptop [name=" + name + ", dis=" + dis + ", amt=" + amt + "]");
+	} 
+}
+
+public class LaptopPriceTester
+{
+    public static void main(String[] args)
+    {
+       
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter Customer Name: ");
+        String name = in.nextLine();
+        System.out.print("Enter Price: ");
+        int price = in.nextInt();
+        //Create Object And Execute Method
+        Laptop l=new Laptop(name, price);
+        l.display();
+    }
+}
