@@ -1,0 +1,102 @@
+/*
+Build a TheaterBookingSystem class to reserve seats for movies or events.
+
+1.Create a class Seat
+Instance variable:-
+String SeatNumber,private
+boolean isReserved,private
+
+Create a parameterise constructor using seatNumber and initialise isResrved with default value.
+
+Create an instance method reserveSeat() 
+if seat is reserved then pirnt "Seat " + seatNumber + " has been reserved."
+other wise seat not booked
+
+create a method isReserved()
+Access Modifier:-
+public 
+Return type:-
+boolean
+
+2.Create a class RegularSeat and inherite Seat class here.
+Create parameterise constructor of class RegularSeat to initialise parent class constructor.
+
+3.Create a class VIPSeat and inherite Seat class here.
+Create parameterise constructor of class RegularSeat to initialise parent class constructor.
+
+4.Create a class TheaterBookingSystem which contains main method to test your code
+//Create an object of class RegularSeat and VIPSeat to intialise the constructors
+//and call their method's.
+
+ Output:-
+Seat A1 has been reserved.
+Seat VIP1 has been reserved.
+Is regularSeat1 reserved? true
+Is vipSeat1 reserved? true.
+*/
+package Oct_17;
+
+public class Shape {
+	public void calculate(int a) {
+
+	}
+
+	public void calculate(int a, int b) {
+
+	}
+
+	public void calculate(int c, double d) {
+
+	}
+}
+
+
+package Oct_17;
+
+public class Circle extends Shape
+{
+	final float pi=3.14f;
+	public void calculate(int r) {
+	System.out.println("Area of Circle: "+pi*r*r);
+	}
+}
+
+
+package Oct_17;
+
+public class Rectangle extends Shape
+{
+	public void calculate(int l, int b) 
+	{
+		System.out.println("Area of Rectangle: "+(l*b));
+		}
+}
+
+
+package Oct_17;
+
+public class Triangle extends Shape 
+{
+	public void calculate(int b, double h) 
+	{
+		System.out.println("Area of Triangle: "+0.5*b*h);
+		}
+}
+
+
+package Oct_17;
+
+public class MainArea {
+
+	public static void main(String[] args) 
+	{
+		Shape s=new Circle();
+		s.calculate(3);
+		s=new Rectangle();
+		s.calculate(4, 6);
+		s=new Triangle();
+		s.calculate(6, 3.0);
+
+	}
+
+}
