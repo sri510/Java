@@ -1,0 +1,133 @@
+/*
+Build a ClassroomBookingSystem class to reserve classrooms for lectures.
+
+1.Create a class Room
+Instance variable:-
+String roomNumber,private
+boolean isReserved,private
+
+Create a parameterise constructor using roomNumber and initialise isResrved with default value.
+
+Create an instance method reserveRoom() 
+if room is reserved then pirnt "Room " + roomNumber + " has been reserved."
+other wise room not booked
+
+create a method isReserved()
+Access Modifier:-
+public 
+Return type:-
+boolean
+
+2. Create a class Classroom and inherite Room class here.
+Create parameterise constructor of class Classroom to initialise parent class 
+constructor.
+
+create an instance method  displayInfo() to print the class-room Details
+
+3. Create a class LectureRoom and inherite Room class here.   
+Create parameterise constructor of class Classroom to initialise parent class 
+constructor.
+
+create an instance method  displayInfo() to print the lacture-room Details
+
+4.Create a class ClassroomBookingSystem which contains main method to test your code.
+//Create an object of class Classroom and LectureRoom
+and call their methods.
+
+Room 101 has been reserved.
+Room 201 has been reserved.
+Classroom Number: 101
+Lecture Room Number: 201
+Is classroom1 reserved? true
+Is lectureRoom1 reserved? true.
+*/
+package Oct_16;
+
+public class Room 
+{
+	protected String roomNumber;
+	protected boolean isReserved;
+	public Room(String roomNumber) 
+	{
+		super();
+		this.roomNumber = roomNumber;
+		isReserved = false;
+	}
+	void reserveRoom()
+	{
+		if(!isReserved())
+		{
+			isReserved=true;
+			System.out.println("Room " + roomNumber + " has been reserved.");
+		}
+		else
+			System.out.println("Room not booked");
+	}
+	public boolean isReserved() 
+	 {
+		return isReserved;
+	 }
+}
+
+
+package Oct_16;
+
+public class Classroom extends Room
+{
+	public Classroom(String roomNumber) 
+	{
+		super(roomNumber);
+	}
+	public void displayInfo()
+	{
+		System.out.println("Classroom : "+roomNumber);
+		if(isReserved==true)
+		{
+			System.out.println("Is Classroom1 reserved? "+isReserved);
+		}
+		else
+		{
+			System.out.println("Is Classroom1 reserved? "+isReserved);
+		}
+	}	
+}
+
+package Oct_16;
+
+public class LectureRoom extends Room
+{
+	public LectureRoom(String roomNumber) 
+	{
+		super(roomNumber);
+	}
+	public void displayInfo()
+	{
+		System.out.println("Lacture Room : "+roomNumber);
+		if(isReserved==true)
+	{
+		System.out.println("Is lectureRoom1 reserved? "+isReserved);
+	}
+	else
+	{
+		System.out.println("Is lectureRoom1 reserved? "+isReserved);
+	}
+	}
+}
+
+
+package Oct_16;
+
+public class ClassroomBookingSystem 
+{
+	public static void main(String[] args) 
+	{
+		Classroom classroom=new Classroom("101");
+		LectureRoom lr=new LectureRoom("201");
+		
+		classroom.reserveRoom();
+		lr.reserveRoom();
+		System.out.println("");
+		classroom.displayInfo();
+		lr.displayInfo();			
+	}
+}
