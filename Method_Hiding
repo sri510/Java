@@ -1,0 +1,27 @@
+/*
+program on Method Hiding.
+*/
+
+class Super
+{
+	public static void display()
+	{
+		System.out.println("Display Method of Super class");
+	}
+}
+class Sub extends Super
+{	
+	//Method Hiding
+	public static void display()
+	{
+		System.out.println("Display Method of Sub class");
+	}
+}
+public class MethodHiding 
+{
+	public static void main(String[] args) 
+	{
+		Super s = new Sub();
+		      s.display();
+	}
+}
