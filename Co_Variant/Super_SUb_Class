@@ -1,0 +1,28 @@
+/*
+The return type of both the METHODS(SUPER AND SUB CLASS METHODS) MUST BE IN INHERITANCE RELATIONSHIP called Co-Variant as shown in the program below.
+*/
+class Super
+{
+	public Object display()
+	{
+		System.out.println("Super class display method!!!");
+		return new Object();
+	}
+}
+class Sub extends Super
+{
+	@Override
+	public String display()
+	{
+		System.out.println("Sub class display method!!!");
+		return null;
+	}
+}
+class CoVariant1 
+{
+	public static void main(String[] args) 
+	{
+		Super s = new Sub();
+		s.display();
+	}
+}
