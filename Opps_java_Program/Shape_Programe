@@ -1,0 +1,113 @@
+/*
+Implement methods to calculate the volume of a cube, cylinder, and sphere. Overload these methods to handle different combinations of parameters like radius, height, and side length.
+1.// Parent class Shape
+// Method to calculate volume of a cube
+Method Name  calculateVolume parameter (double sideLength)
+Access Modifier:-
+public 
+Return type:-
+double
+
+// Method to calculate volume of a cylinder
+Method Name  calculateVolume parameter (double radius,double height)
+Access Modifier:-
+public 
+Return type:-
+double
+
+// Method to calculate volume of a sphere
+Method Name  calculateVolume parameter (double radius)
+Access Modifier:-
+public 
+Return type:-
+double
+
+2.// Subclass Cube inheriting from Shape
+// Method overriding to provide specific implementation for cubes
+// Reusing the parent class method for cubes
+
+3.// Subclass Cylinder inheriting from Shape
+// Method overriding to provide specific implementation for cylinders
+// Reusing the parent class method for cylinders
+
+4.// Subclass Sphere inheriting from Shape
+// Method overriding to provide specific implementation for spheres
+// Reusing the parent class method for spheres
+
+5.Create a class MainShape which contains main method to test your code.
+// Creating objects of different shapes
+// Calculating volumes using different methods based on shape
+// Call the methods.
+
+Formula:-
+Cube:- n*n*n
+Cylender:- pi*r*r*h
+Sphere:-4/3*pi*r*r
+
+Volume of the Cube: 27.0
+Volume of the Cylinder: 25.132741228718345
+Volume of the Sphere: 14.137166941154069
+*/
+package Oct_18;
+
+class Vehicle 
+{
+	private double totalDistance;
+    private double totalFuelConsumed;
+
+    public Vehicle(double totalDistance, double totalFuelConsumed) {
+        this.totalDistance = totalDistance;
+        this.totalFuelConsumed = totalFuelConsumed;
+    }
+
+    // Method to calculate fuel efficiency in kilometers per liter
+    public double calculateFuelEfficiency() {
+        return totalDistance / totalFuelConsumed;
+    }
+
+    // Method to calculate fuel efficiency with miles and gallons as input
+    public double calculateFuelEfficiency(double miles, double gallons) {
+        return miles / gallons;
+    }
+}
+
+
+
+package Oct_18;
+
+class Car extends Vehicle {
+    public Car(double totalDistance, double totalFuelConsumed) {
+        super(totalDistance, totalFuelConsumed);
+    }
+
+    @Override
+    public double calculateFuelEfficiency() {
+        // Assuming totalDistance and totalFuelConsumed are in kilometers and liters respectively
+        // Convert efficiency from km/l to miles/gallon: 1 km/l = 2.35215 miles/gallon
+        return super.calculateFuelEfficiency() * 2.35215;
+    }
+}
+
+package Oct_18;
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating a Vehicle object
+        Vehicle vehicle = new Vehicle(1000.0, 100.0);
+
+        // Calculating fuel efficiency in km/l using the first method
+        double fuelEfficiencyKmpl = vehicle.calculateFuelEfficiency();
+        System.out.println("Fuel Efficiency (km/l): " + fuelEfficiencyKmpl);
+
+        // Calculating fuel efficiency in miles/gallon using the overloaded method
+        double fuelEfficiencyMpg = vehicle.calculateFuelEfficiency(1000.0 * 0.621371, 100.0 * 0.264172);
+        System.out.println("Fuel Efficiency (miles/gallon): " + fuelEfficiencyMpg);
+
+        // Creating a Car object
+        Car car = new Car(1000.0, 100.0);
+
+        // Calculating fuel efficiency in miles/gallon using the overridden method in Car class
+        double carFuelEfficiencyMpg = car.calculateFuelEfficiency();
+        System.out.println("Car Fuel Efficiency (miles/gallon): " + carFuelEfficiencyMpg);
+    }
+}
