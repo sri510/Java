@@ -1,0 +1,131 @@
+/*
+Create a class Vehicle that has a FuelTank object. FuelTank has methods to get fuel level and refill fuel. Implement polymorphism with different types of vehicles sharing the same fuel tank logic.
+
+1.Create a class FuelTank
+
+Instance variable:-
+
+double fuelLevel,private
+
+final double maxCapacity,private
+
+Create parametrise constructor to initialise the maxCapacity and fuelLevel is initialise with default value.
+
+Generate getter method for fuelLevel.
+
+Create an Instance method refillFuel() with parameter amount type double
+
+//If fuelLevel and amount is lesser then maxCapacity then add fuelLevel with amount
+
+//print "Fuel refilled. Current fuel level: " + fuelLevel + " liters"
+
+//Otherwise print "Cannot refill. Tank capacity exceeded."
+
+2. Create another class Vehicle
+
+Instance Variable:-
+
+Fueltank fuelTank,private //Has-a-realtion
+
+Create parameterise constructor.
+
+Create an instance method displayFuelLevel() to print "Current fuel level: " + fuelTank.getFuelLevel() + " liters"
+
+Create an instance method refillFuel() with parameter amount type double.
+
+//to refill the tank
+
+3. Create a class Car inherite Vehicle class here
+
+Create a peremeterise constructor using Fueltank fuelTank pass the reference to parent class.
+
+4. Create a class Motorcycle inherite Vehicle class here
+
+Create a peremeterise constructor using Fueltank fuelTank pass the reference to parent class.
+
+5. Create a class Main which contains main method to test your code
+
+//Create an object for class FuelTank,Car and Motorcycle.
+
+//call the methods of the above class
+
+Output:-
+
+Fuel refilled. Current fuel level: 30.0 liters
+
+Cannot refill. Tank capacity exceeded.
+
+Current fuel level: 30.0 liters
+
+Current fuel level: 0.0 liters
+*/
+ class FuelTank 
+{
+	private double fuelLevel;
+	private final double maxCapacity;
+	public FuelTank(double maxCapacity) 
+	{
+		super();
+		fuelLevel = 0.0;
+		this.maxCapacity = maxCapacity;
+	}
+	public double getFuelLevel() 
+	{
+		return fuelLevel;
+	}
+	public void refillFuel(double amount)
+	{
+		if(fuelLevel+amount<=maxCapacity)
+		{
+			fuelLevel+=amount;
+			System.out.println("Fuel refilled. Current fuel level: " + fuelLevel + " liters");
+		}else {
+			System.out.println("Cannot refill. Tank capacity exceeded.");
+	}
+}
+}
+
+class Vehicle {
+	private FuelTank fuelTank;
+
+	public Vehicle(FuelTank fuelTank) {
+		super();
+		this.fuelTank = fuelTank;
+	}
+	public void displayFuelLevel() {
+		System.out.println("Current fuel level: " + fuelTank.getFuelLevel() + " liters");
+	}
+	
+	public void refillFuel(double amount) {
+		fuelTank.refillFuel(amount);
+	}
+}
+
+class Car extends Vehicle{
+
+	public Car(FuelTank fuelTank) {
+		super(fuelTank);
+	}
+
+}
+
+ class Motorcycle extends Vehicle {
+
+	public Motorcycle(FueTank fuelTank) {
+		super(fuelTank);
+	}
+}
+public class MyProgram {
+
+	public static void main(String[] args) 
+	{
+		FuelTank car=new FuelTank(50.0);
+		FuelTank bike=new FuelTank(30.0);
+		Car c=new Car(car);
+		Motorcycle m=new Motorcycle(bike);
+		c.refillFuel(40);
+		m.refillFuel(31);
+		c.displayFuelLevel();
+		m.displayFuelLevel();
+	}
+}
