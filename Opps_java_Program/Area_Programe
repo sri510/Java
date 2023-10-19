@@ -1,0 +1,65 @@
+/*
+Create a base class Shape with methods to calculate the area. Create subclasses Circle, Rectangle, and Triangle. Implement method overloading in these subclasses for calculating area based on the number and type of parameters.
+
+Formula:-
+Area of Circle: 
+pi*r*r
+Area of Rectangle: 
+length×width
+Area of Triangle: 
+1/2*base*height
+
+
+Output:-
+Area of Circle: 78.53981633974483
+Area of Rectangle: 24.0
+Area of Triangle: 12.0
+*/
+package Oct_17;
+
+public class Circle extends Shape
+{
+	final float pi=3.14f;
+	public void calculate(int r) {
+	System.out.println("Area of Circle: "+pi*r*r);
+	}
+}
+
+
+package Oct_17;
+
+public class Rectangle extends Shape
+{
+	public void calculate(int l, int b) 
+	{
+		System.out.println("Area of Rectangle: "+(l*b));
+		}
+}
+
+
+package Oct_17;
+
+public class Triangle extends Shape 
+{
+	public void calculate(int b, double h) 
+	{
+		System.out.println("Area of Triangle: "+0.5*b*h);
+		}
+}
+
+
+package Oct_17;
+
+public class Shape {
+	public void calculate(int a) {
+
+	}
+
+	public void calculate(int a, int b) {
+
+	}
+
+	public void calculate(int c, double d) {
+
+	}
+}
