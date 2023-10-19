@@ -1,0 +1,87 @@
+/*
+Implement a Time class with constructors that accept hours, minutes, and seconds. Overload constructors to handle different combinations of parameters.
+1.Create a class Time 
+Instance Variable:-
+private int hours;
+private int minutes;
+private int seconds;
+
+// Default constructor 
+
+// Constructor with hours parameter
+
+// Constructor with hours and minutes parameters
+
+// Constructor with hours, minutes, and seconds parameters
+
+
+Generate getter method for instance variable
+
+// Override toString() method to display Time object as a string
+
+2. Create a class MainTime which contains main method to test your code.
+
+Output:-
+Time 1: 00:00:00
+Time 2: 02:00:00
+Time 3: 03:45:00
+Time 4: 01:30:15
+*/
+
+public class Time {
+	private int hours;
+	private int minutes;
+	private int seconds;
+
+	public Time() {
+	}
+
+	public Time(int hours) {
+		this.hours = hours;
+	}
+
+	public Time(int hours, int minutes) {
+		this.hours = hours;
+		this.minutes = minutes;
+	}
+
+	public Time(int hours, int minutes, int seconds) {
+		super();
+		this.hours = hours;
+		this.minutes = minutes;
+		this.seconds = seconds;
+	}
+	
+	public int getHours() {
+		return hours;
+	}
+
+	public int getMinutes() {
+		return minutes;
+	}
+
+	public int getSeconds() {
+		return seconds;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("%02d:%02d:%02d", getHours(), getMinutes(), getSeconds());
+	}
+}
+
+
+public class MainTime {
+
+	public static void main(String[] args) 
+	{
+		Time t=new Time();
+		System.out.println( "Time 1: "+t);
+		Time t1=new Time(2);
+		System.out.println( "Time 2: "+ t1.toString());
+		Time t2=new Time(3,45);
+		System.out.println( "Time 3: "+ t2.toString());
+		Time t3=new Time(1,30,50);
+		System.out.println( "Time 4: "+ t3.toString());
+	}
+}
