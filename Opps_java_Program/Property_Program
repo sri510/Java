@@ -1,0 +1,135 @@
+/*
+Design a Property class with attributes like address, square footage, and price.
+
+1.Create a class Property
+Instance variable:-
+String address,private
+double squareFootage,private
+double price,private
+
+Create a parameterise constructor to initialise the instance variable's.
+
+Generate the getter's method to get the value's.
+
+Create an instance method displayInfo() to print the above details.
+
+2.Create a class House inherite class Property here.
+Instance variable's:-
+int numberOfBedrooms,private
+int numberOfBathrooms,private
+
+Create a parameterise constructor to initialise the above instance variable and also parent class constructor.
+
+Create an instance method displayInfo() to print the above details with property.
+
+
+3.Create a class PropertyDemo which contains main method to test your code.
+//Create an object of class Property and House to intialise the constructors
+//call their method's
+
+Output:-
+Property Details:
+Address: 123 Main St
+Square Footage: 1500.0 sq. ft.
+Price: $200000.0
+
+House Details:
+Address: 456 Oak Ave
+Square Footage: 2000.0 sq. ft.
+Price: $300000.0
+Number of Bedrooms: 3
+Number of Bathrooms: 2
+*/
+package Oct_14;
+
+public class Property {
+	private String address;
+	private double squareFootage;
+	private double price;
+
+	public Property(String address, double squareFootage, double price) {
+		super();
+		this.address = address;
+		this.squareFootage = squareFootage;
+		this.price = price;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public double getSquareFootage() {
+		return squareFootage;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	void displayInfo() {
+		System.out.println(
+				"Address: " + address + ", \nSquare Footage: " + squareFootage + " sq. ft., \nPrice: " + price + " ");
+	}
+}
+
+
+package Oct_14;
+
+public class Apartment extends Property
+{
+	private int numberOfRooms;
+    private boolean hasBalcony;
+    
+	public Apartment(String address, double squareFootage, double price, int numberOfRooms, boolean hasBalcony)
+	{
+		super(address, squareFootage, price);
+		this.numberOfRooms=numberOfRooms;
+		this.hasBalcony=hasBalcony;
+	}
+	public void displayInfo()
+	{
+		super.displayInfo();
+		System.out.println("Number of Rooms: "+numberOfRooms);
+		System.out.println("Has Balcony: "+hasBalcony);
+	}
+}
+
+
+package Oct_14;
+
+public class House extends Property
+{
+	private int numberOfBedrooms;
+	private int numberOfBathrooms;
+	
+	public House(String address, double squareFootage, double price,int numberOfBedrooms,int numberOfBathrooms)
+	{
+		super(address, squareFootage, price);
+		this.numberOfBathrooms=numberOfBathrooms;
+		this.numberOfBedrooms=numberOfBedrooms;
+	}
+	public void displayInfo()
+	{
+		super.displayInfo();
+		System.out.println("Number Of Bedrooms: "+numberOfBedrooms);
+		System.out.println("Number Of Bathrooms: "+numberOfBathrooms);
+	}
+
+}
+
+
+
+package Oct_14;
+
+public class HomeSearchApp {
+
+	public static void main(String[] args) 
+	{
+		House h=new  House("123 Main St", 1500.0, 200000.0, 3, 2);
+		Apartment a=new Apartment("456 Oak Ave", 2000.0, 300000.0, 3, false);
+		System.out.println();
+		h.displayInfo();
+		a.displayInfo();
+	}
+
+}
