@@ -1,0 +1,107 @@
+/*
+Build a TheaterBookingSystem class to reserve seats for movies or events.
+
+1.Create a class Seat
+Instance variable:-
+String SeatNumber,private
+boolean isReserved,private
+
+Create a parameterise constructor using seatNumber and initialise isResrved with default value.
+
+Create an instance method reserveSeat() 
+if seat is reserved then pirnt "Seat " + seatNumber + " has been reserved."
+other wise seat not booked
+
+create a method isReserved()
+Access Modifier:-
+public 
+Return type:-
+boolean
+
+
+2.Create a class RegularSeat and inherite Seat class here.
+Create parameterise constructor of class RegularSeat to initialise parent class constructor.
+
+3.Create a class VIPSeat and inherite Seat class here.
+Create parameterise constructor of class RegularSeat to initialise parent class constructor.
+
+4.Create a class TheaterBookingSystem which contains main method to test your code
+//Create an object of class RegularSeat and VIPSeat to intialise the constructors
+//and call their method's.
+
+ Output:-
+Seat A1 has been reserved.
+Seat VIP1 has been reserved.
+Is regularSeat1 reserved? true
+Is vipSeat1 reserved? true
+*/
+package Oct_14;
+
+public class Seat 
+{
+	private String SeatNumber;
+	private boolean isReserved;
+	
+	public Seat(String seatNumber) 
+	{
+		super();
+		SeatNumber = seatNumber;
+		isReserved = true;
+	}
+	 void reserveSeat()
+	{
+		if(isReserved())
+		{
+			System.out.println("Seat " + SeatNumber + " has been reserved.");
+			if(isReserved==true) {
+				System.out.println("Is "+SeatNumber+" reserved?"+isReserved);
+			}
+		}
+		else
+			System.out.println("seat not booked");
+	}
+	 public boolean isReserved() 
+	 {
+		return isReserved;
+	 }
+}
+
+
+package Oct_14;
+
+public class RegularSeat extends Seat
+{
+
+	public RegularSeat(String seatNumber) 
+	{
+		super(seatNumber);
+	}
+}
+
+
+package Oct_14;
+
+public class VIPSeat extends Seat
+{
+
+	public VIPSeat(String seatNumber) 
+	{
+		super(seatNumber);
+	}
+}	
+
+
+package Oct_14;
+
+public class TheaterBookingSystem {
+
+	public static void main(String[] args) 
+	{
+		RegularSeat rs1=new RegularSeat("A1"); 
+		VIPSeat vip=new VIPSeat("VIP1");
+		System.out.println("");
+		rs1.reserveSeat();	
+		vip.reserveSeat();
+		
+	}
+}
