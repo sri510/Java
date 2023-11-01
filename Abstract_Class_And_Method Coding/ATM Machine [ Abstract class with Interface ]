@@ -1,0 +1,183 @@
+/*
+Let us Consider ATM Machine
+
+We Perform all the operations on the ATM machine like withdrawal cash , money transfer and balance. 
+
+
+
+For each operation we enter password so, implement this process as follows.
+
+
+
+An interface named as Password and A class named as ATM and it is abstract so we need to implement abstract method in sub class named as Test.
+
+
+
+For Interface Password
+
+Instance variables: //Initialize your variables because in interface variable are final
+
+password : int 
+
+balance : int 
+
+
+
+Methods:
+
+withdrawalCash(int, int) : boolean 
+
+moneyTransfer(int, int) : boolean
+
+balance : int
+
+
+
+For abstract class ATM implements to Password
+
+Instance Variables : No instance variables
+
+Methods:
+
+No Argument Constructor
+
+@Override
+
+boolean : withdrawalCash(int, int) 
+
+This method having condition if entered password matched to account password(stored in 
+
+bank) it moved futher operation like withdrawl and in check withdral if ammount is available or 
+
+not and entered ammount must must be less than balance otherwise it fails
+
+@Override
+
+moneyTransfer(int, int) : boolean
+
+This method having condition if entered password matched to account password(stored in bank) it moved futher operation like money transfer and in money transfer if ammount is available or not and entered ammount must must be less than balance otherwise it fails display() : public : void : abstract
+
+For Test class is a sub class of ATM
+
+@Override
+
+display(): void : It print all the methods of parent class and creates an instances of all methods of parent class
+
+
+
+Create an ELC class MainAtm having main method to test the solutions of parent class
+
+Explanation:
+
+
+
+The withdrawalCash(1234, 500) method is called, which deducts 500 from the initial balance of 1000. After this operation, the remaining balance is 500.
+
+
+
+The moneyTransfer(1234, 200) method is called, which deducts 200 from the remaining balance of 500. After this operation, the remaining balance is 300.
+
+
+
+Finally, the display() method is called, which prints the remaining balance of 300.
+
+
+
+Output:-
+
+Withdrawal successful. Remaining balance: 500
+
+Money transfer successful. Remaining balance: 300
+
+ATM Balance: 300
+*/
+// Interface Password
+interface Password {
+    int getPassword();
+    int getBalance();
+
+    boolean withdrawalCash(int password, int amount);
+    boolean moneyTransfer(int password, int amount);
+    void display();
+}
+
+// Abstract class ATM implementing the Password interface
+abstract class ATM implements Password {
+    private int password;  // Account password
+    private int balance;   // Account balance
+
+    // Constructor
+    public ATM(int password, int balance) {
+        this.password = password;
+        this.balance = balance;
+    }
+
+    // Getter methods for password and balance
+    @Override
+    public int getPassword() {
+        return password;
+    }
+
+    @Override
+    public int getBalance() {
+        return balance;
+    }
+
+    @Override
+    public boolean withdrawalCash(int password, int amount) {
+        if (this.password == password) {
+            if (amount > 0 && amount <= balance) {
+                balance -= amount;
+                System.out.println("Withdrawal successful. Remaining balance: " + balance);
+                return true;
+            } else {
+                System.out.println("Withdrawal failed. Insufficient balance or invalid amount.");
+            }
+        } else {
+            System.out.println("Withdrawal failed. Incorrect password.");
+        }
+        return false;
+    }
+
+    @Override
+    public boolean moneyTransfer(int password, int amount) {
+        if (this.password == password) {
+            if (amount > 0 && amount <= balance) {
+                balance -= amount;
+                System.out.println("Money transfer successful. Remaining balance: " + balance);
+                return true;
+            } else {
+                System.out.println("Money transfer failed. Insufficient balance or invalid amount.");
+            }
+        } else {
+            System.out.println("Money transfer failed. Incorrect password.");
+        }
+        return false;
+    }
+
+    public abstract void display();
+}
+
+// Test class as a subclass of ATM
+class Test extends ATM {
+    public Test(int password, int balance) {
+        super(password, balance);
+    }
+
+    @Override
+    public void display() {
+        System.out.println("ATM Balance: " + getBalance());
+    }
+}
+
+// Main class to test the ATM simulation
+public class MainAtm {
+    public static void main(String[] args) {
+        Test atm = new Test(1234, 1000);
+
+        // Perform operations
+        atm.withdrawalCash(1234, 500);
+        atm.moneyTransfer(1234, 200);
+        atm.display();
+   }
+}
