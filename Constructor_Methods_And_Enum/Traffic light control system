@@ -1,0 +1,127 @@
+/*
+You are building a traffic light control system. Define an Enum representing different colors of traffic lights (Red, Yellow, Green) and an Inner class for each color to handle specific behavior when the light is on that color.
+
+
+
+// Enum representing different colors of traffic lights
+
+Create an Enum class TrafficLightColor
+
+Instance Variable:-
+
+RED
+
+YELLOW
+
+GREEN
+
+
+
+
+
+Create a BLC class TrafficLightControlSystem which is having Inner-classes
+
+
+
+Create an Inner class RedLight
+
+//Create an instance method displayTrafficLight()
+
+// Inner class for Red traffic light behavior
+
+
+
+Create an Inner class YellowLight
+
+//Create an instance method displayTrafficLight()
+
+// Inner class for Yellow traffic light behavior
+
+
+
+Create an Inner class GreenLight
+
+//Create an instance method displayTrafficLight()
+
+// Inner class for Green traffic light behavior
+
+
+
+Create an instnace method for class TrafficLightControlSystem 
+
+Method Name:-
+
+controlTrafficLight() parameter TrafficLightColor color
+
+// Method to control the traffic light behavior based on the color
+
+//Use switch here..
+
+
+Create an ELC class MainTrafic which contains main method 
+
+//Create an object for TrafficLightControlSystem-class
+
+ // Simulate different traffic light colors
+
+
+Output:-
+
+Traffic Light is RED. Please stop!
+
+Traffic Light is YELLOW. Prepare to stop.
+
+Traffic Light is GREEN. You can go!
+*/
+enum TrafficLightColor {
+	RED,YELLOW,GREEN;
+
+	public class GREEN {
+
+	}
+
+}
+ class TrafficLightControlSystem {
+	public class RedLight{
+		public void displayTrafficLight() {
+			System.out.println("Traffic Light is "+TrafficLightColor.RED+" Please Stop!");
+		}
+	}
+	public class YellowLight{
+		public void displayTrafficLight() {
+			System.out.println("Traffic Light is "+TrafficLightColor.YELLOW+" Prepare to stop.");
+		}
+	}
+	public class GreenLight{
+    public void displayTrafficLight() {
+    	System.out.println("Traffic Light is "+TrafficLightColor.GREEN+" You can go!");
+    }
+	}
+
+	public void TrafficLightControlSystem(TrafficLightColor color)
+	{
+		switch(color)
+		{
+			case RED : 
+				new RedLight().displayTrafficLight();
+			break;
+			
+			case YELLOW : 
+				new YellowLight().displayTrafficLight();
+			break;
+			case GREEN : 
+				new GreenLight().displayTrafficLight();
+			break;
+		}
+
+	}
+	}
+public class MyProgram {
+	public static void main(String[] args) {
+		TrafficLightControlSystem ob = new TrafficLightControlSystem();
+		ob.TrafficLightControlSystem(TrafficLightColor.RED);
+		ob.TrafficLightControlSystem(TrafficLightColor.YELLOW);
+		ob.TrafficLightControlSystem(TrafficLightColor.GREEN);
+	}
+
+	}
