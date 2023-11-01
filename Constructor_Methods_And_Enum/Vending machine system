@@ -1,0 +1,188 @@
+/*
+Design a vending machine system. Use Enum to represent different types of items (e.g., snacks, beverages) and Inner classes to handle specific actions for each item, such as dispensing and calculating change.
+
+
+
+// Enum representing different types of items in the vending machine
+
+Create an Enum class ItemType
+
+Instance Variable:-
+
+SNACKS 
+
+BEVERAGES
+
+
+
+
+
+
+
+Create a BLC class VendingMachine which is having Inner-classes
+
+
+
+Create an Inner-class Snacks
+
+Instnace Variable:-
+
+int price is 2;
+
+ 
+
+Create an Instance method dispenseItem() 
+
+
+
+
+
+Create an Inner-class Beverages
+
+Instnace Variable:-
+
+int price is 2;
+
+ 
+
+Create an Instance method dispenseItem() 
+
+
+
+// Method to handle item selection and payment
+
+Create an instance method 
+
+Method Name:-
+
+selectItem() with parameter ItemType itemType, int money
+
+//Use switch here..
+
+
+
+
+
+// Main class to demonstrate the vending machine system
+
+Create an Elc class MainItem which contains main method to test your code.
+
+//Create an object of class VendingMachine
+
+// User selects snacks and pays 2 units
+
+// User selects beverages and pays 3 units
+
+// User selects snacks but does not have enough money
+
+// User selects an invalid item
+
+
+
+
+
+Output:-
+
+User selects snacks and pays 2 units:
+
+Dispensing snacks. Enjoy your snack!
+
+
+
+User selects beverages and pays 3 units:
+
+Dispensing beverage. Enjoy your drink!
+
+Returning change: 0 units
+
+
+
+User selects snacks but does not have enough money:
+
+Insufficient funds for snacks.
+
+
+
+User selects an invalid item:
+
+Invalid item selection.
+
+*/
+enum ItemType 
+{
+	SNACKS, BEVERAGES;
+}
+class VendingMachine 
+{
+	class Snacks
+	{
+		int price=2;
+		
+		void dispenseItem()
+		{
+			System.out.println("Dispensing snacks. Enjoy your snack!");
+		}
+	}
+	class Beverages 
+	{
+		int price = 2;
+		
+		void dispenseItem() 
+		{
+			System.out.println("Dispensing beverage. Enjoy your drink!");
+		}
+	}
+	
+	void selectItem(ItemType itemType, int money)
+	{
+		switch (itemType)
+		{
+		case SNACKS:
+			if(money>=new Snacks().price)
+			{
+				Snacks s=new Snacks();
+				s.dispenseItem();
+			}
+			else
+			{
+				System.out.println("Insufficient funds for snacks.");
+			}
+			break;
+			
+		case BEVERAGES:
+			if(money>=new Beverages().price)
+			{
+				Beverages s=new Beverages();
+				s.dispenseItem();
+			}
+			else
+			{
+				System.out.println("Insufficient funds for beverages.");
+			}
+			break;
+			
+			default:
+				System.out.println("Invalid item selection.");
+		}
+	}
+}
+
+
+public class MyProgram
+{
+    public static void main(String[] args)
+    {
+       VendingMachine vm=new VendingMachine();
+		System.out.println("User selects snacks and pays 2 units : ");
+		vm.selectItem(ItemType.SNACKS, 2);
+		
+		System.out.println("User selects bevrage and pays 3 units : ");
+		vm.selectItem(ItemType.BEVERAGES, 3);
+		
+		System.out.println("User selects snacks but does not have enough money : ");
+		vm.selectItem(ItemType.SNACKS, 1);
+		
+		System.out.println("User selects an invalid item : ");
+		vm.selectItem(ItemType.BEVERAGES, 2); 
+    }
+}
