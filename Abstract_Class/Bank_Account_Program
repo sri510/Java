@@ -1,0 +1,145 @@
+/*
+Create an abstract class “BankAccount” with abstract methods “deposit()” and “withdraw()”. 
+
+Implement two subclasses “SavingsAccount” and “CheckingAccount” which extend “BankAccount” and implement the abstract methods. 
+
+Create a “Customer” class which contains a list of “BankAccount” objects . 
+
+Add methods to the “Customer” class to display account balances, deposit/withdraw money, etc. 
+
+Create objects of all classes and test their behavior.
+
+
+
+
+
+
+
+Explanation:
+
+
+
+Initially, $1000 is deposited into the savings account, so the balance becomes $1000.
+
+$500 is deposited into the checking account, so the balance becomes $1500.
+
+$200 is withdrawn from the savings account, so the balance becomes $1000 - $200 = $800.
+
+$100 is withdrawn from the checking account, so the balance becomes $1500 - $100 = $1400.
+
+Finally, the displayAccountBalances() method is called, which prints the updated balances of both accounts.
+
+
+
+Output:-
+
+Account Balances for Customer: John Doe
+
+Balance: $800.0
+
+Balance: $1400.0
+*/
+import java.util.ArrayList;
+
+abstract class BankAccount
+{
+    protected double balance;
+
+    public BankAccount(double initialBalance) 
+    {
+        balance = initialBalance;
+    }
+
+    public abstract void deposit(double amount);
+    public abstract void withdraw(double amount);
+  
+    public double getBalance()
+    {
+        return balance;
+    }
+}
+
+class SavingsAccount extends BankAccount 
+{
+    public SavingsAccount(double initialBalance) 
+    {
+        super(initialBalance);
+    }
+
+    @Override
+    public void deposit(double amount) 
+    {
+    	balance+=amount;
+    }
+
+    @Override
+    public void withdraw(double amount)
+    {
+    	 balance-=amount ;
+    }
+}
+
+class CheckingAccount extends BankAccount 
+{
+    public CheckingAccount(double initialBalance) 
+    {
+        super(initialBalance);
+    }
+
+    @Override
+    public void deposit(double amount) {
+    	balance+=amount;
+    }
+
+    @Override
+    public void withdraw(double amount)
+    {
+        balance-=amount ;
+    }
+}
+
+class Customer 
+{
+    private String customerName;
+    private ArrayList<BankAccount> accounts = new ArrayList<>();
+
+    public Customer(String customerName)
+    {
+        this.customerName = customerName;
+    }
+
+    public void addAccount(BankAccount account) 
+    {
+        accounts.add(account);
+    }
+
+    public void displayAccountBalances()
+    {
+        System.out.println("Account Balances for Customer: " + customerName);
+        for (BankAccount account : accounts)
+        {
+            System.out.println("Balance: $" + account.getBalance());
+        }
+    }
+}
+
+public class MyProgram 
+{
+    public static void main(String[] args)
+    {
+       
+    	SavingsAccount savingsAccount = new SavingsAccount(1000);
+        savingsAccount.deposit(500);
+        savingsAccount.withdraw(200);
+       
+        CheckingAccount checkingAccount = new CheckingAccount(1000);
+        checkingAccount.deposit(500);
+        checkingAccount.withdraw(300);
+       
+        Customer johnDoe = new Customer("John Doe");
+        johnDoe.addAccount(savingsAccount);
+        johnDoe.addAccount(checkingAccount);
+        
+        johnDoe.displayAccountBalances();
+    }
+}
