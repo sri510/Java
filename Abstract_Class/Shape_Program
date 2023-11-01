@@ -1,0 +1,137 @@
+/*
+Create an abstract class “Shape” with abstract methods “getArea()” and “getPerimeter()”. 
+
+Implement two subclasses “Rectangle” and “Circle” which extend “Shape” and implement the abstract methods. 
+
+Create a “Square” class which extends “Rectangle” and overrides the necessary methods. 
+
+Create objects of all classes and test their behavior.
+
+
+
+For Rectangle class
+
+Instance Variable:-
+
+double length,private
+
+double width,private
+
+
+
+area=length*width
+
+parameter= 2*(length*width)
+
+
+
+For Circle class
+
+Instance Variable:-
+
+double radius,private
+
+
+
+area= PI*r*r
+
+parameter= 2*PI*r where(PI= 3.14159).
+
+
+
+Output:-
+
+Rectangle area: 24.0
+
+Rectangle perimeter: 20.0
+
+Circle area: 28.274333882308138
+
+Circle perimeter: 18.84955592153876
+
+Square area: 25.0
+
+*/
+abstract class Shape 
+{
+	public abstract double getArea();
+	public abstract double getPerimeter();
+}
+   class Rectangle extends Shape 
+{
+	private double length;
+	private double width;
+	
+	public Rectangle (double length,double width)
+	{
+		this.length= length;
+		this.width=width;
+	}
+
+	@Override
+	public double getArea() {
+		return length*width;
+	}
+
+	@Override
+	public double getPerimeter() {
+		return 2*(length*width)  ;
+	}
+	
+}
+     class Circle extends Shape
+{
+	private final double PI =3.14159;
+	private double radius ;
+	
+	public Circle (double radius )
+	{
+		this.radius=radius;
+	}
+
+	@Override
+	public double getArea() {
+		return PI*radius*radius;
+	}
+
+	@Override
+	public double getPerimeter() {
+		return 2*PI*radius;
+	}
+
+}
+     class Square extends Rectangle 
+{
+
+	public Square(double side) {
+		super(side, side);
+	}
+
+	@Override
+	public double getArea() {
+		return super.getArea();
+	}
+
+	@Override
+	public double getPerimeter() {
+		return super.getPerimeter();
+	}
+	
+}
+public class MyProgram {
+	public static void main(String[]args)
+	{
+    Rectangle r = new Rectangle(5.0,7.0);
+    System.out.println("Rectange area:"+r.getArea());
+    System.out.println("Rectangle perimeter :"+r.getPerimeter());
+    
+    Circle c= new Circle(9.0);
+    System.out.println("Circle area:"+c.getArea());
+    System.out.println("Circle perimeter :"+c.getPerimeter());
+    
+    Square s=new Square(7.0);
+    System.out.println("Square area:"+s.getArea());
+    System.out.println("Square perimeter :"+s.getPerimeter());
+	}
+}
+Square perimeter: 20.0
